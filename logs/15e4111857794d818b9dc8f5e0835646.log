@@ -1,0 +1,200 @@
+2026-05-02 21:22:43,958 INFO [backend.app.api.routes.camera] [0c9027fd] Stopped 0 camera stream(s) for printer 1
+2026-05-02 21:22:43,959 INFO [uvicorn.access] [-] [IP]:8507 - "POST /api/v1/printers/1/camera/stop HTTP/1.1" 200
+2026-05-02 21:22:44,056 INFO [backend.app.api.routes.camera] [14d6d0c8] Chamber image stream stopped for [IP] (stream_id=2-fanout)
+2026-05-02 21:22:44,057 INFO [backend.app.api.routes.camera] [bb0a8dec] Shut down camera fan-out broadcaster for printer 2
+2026-05-02 21:22:44,057 INFO [backend.app.api.routes.camera] [bb0a8dec] Stopped 0 camera stream(s) for printer 2
+2026-05-02 21:22:44,059 INFO [uvicorn.access] [-] [IP]:18317 - "POST /api/v1/printers/2/camera/stop HTTP/1.1" 200
+2026-05-02 21:22:53,167 INFO [backend.app.services.bambu_ftp] [-] FTP STOR confirmed for /L028-0306_Berg_p1p_v3-11.3mf: 226
+2026-05-02 21:22:53,168 INFO [backend.app.services.bambu_ftp] [-] FTP upload complete: /L028-0306_Berg_p1p_v3-11.3mf (4518325 bytes in 21.4s, 206 KB/s)
+2026-05-02 21:22:53,168 INFO [backend.app.services.bambu_ftp] [-] FTP mode cached for [IP]: prot_p
+2026-05-02 21:22:53,186 INFO [backend.app.main] [-] Registered expected print: printer=2, file=L028-0306_Berg_p1p_v3-11.3mf, archive=175, ams_mapping=[2, 3]
+2026-05-02 21:22:53,190 INFO [backend.app.services.print_scheduler] [-] Queue item 168: Status set to 'printing', sending print command...
+2026-05-02 21:22:53,191 INFO [backend.app.services.printer_manager] [-] PRINT COMMAND: printer=2, file=L028-0306_Berg_p1p_v3-11.3mf, caller=print_scheduler.py:298:check_queue
+2026-05-02 21:22:53,192 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Sending print command: {"print": {"sequence_id": "20000", "command": "project_file", "param": "Metadata/plate_1.gcode", "url": "ftp://L028-0306_Berg_p1p_v3-11.3mf", "file": "L028-0306_Berg_p1p_v3-11.3mf", "md5": "", "bed_type": "auto", "timelapse": false, "bed_leveling": true, "auto_bed_leveling": 1, "flow_cali": false, "vibration_cali": true, "layer_inspect": false, "use_ams": true, "cfg": "0", "extrude_cali_flag": 0, "extrude_cali_manual_mode": 0, "nozzle_offset_cali": 2, "subtask_name": "L028-0306_Berg_p1p_v3-11", "profile_id": "0", "project_id": "1780797122", "subtask_id": "1780797122", "task_id": "1780797122", "ams_mapping": [2, 3], "ams_mapping2": [{"ams_id": 0, "slot_id": 2}, {"ams_id": 0, "slot_id": 3}]}}
+2026-05-02 21:22:53,192 INFO [backend.app.services.print_scheduler] [-] Queue item 168: Print started successfully - L028-0306_Berg_p1p_v3-11.gcode.3mf
+2026-05-02 21:22:53,201 INFO [backend.app.services.print_scheduler] [-] Starting queue item 171
+2026-05-02 21:22:53,474 INFO [backend.app.services.print_scheduler] [-] Queue item 171: Created archive 176 from library file 32
+2026-05-02 21:22:53,489 INFO [backend.app.services.print_scheduler] [-] Queue item 171: FTP upload starting - printer=[PRINTER] (P1S), ip=[IP], file=L014-0309_Stern_p1s_v3-11.3mf, local_path=/app/data/archive/library/files/79a0b17d1e9b4184874acafd21676814.3mf, retry_enabled=True, retry_count=3, timeout=30.0
+2026-05-02 21:22:54,471 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P1S, prot_c=False)
+2026-05-02 21:22:54,487 WARNING [backend.app.services.bambu_ftp] [-] Failed to delete /L014-0309_Stern_p1s_v3-11.3mf: 550 
+2026-05-02 21:22:54,510 INFO [backend.app.services.bambu_ftp] [-] FTP connecting to [IP] for upload (model=P1S, mode=prot_p, socket_timeout=30.0s)...
+2026-05-02 21:22:55,612 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P1S, prot_c=False)
+2026-05-02 21:22:55,612 INFO [backend.app.services.bambu_ftp] [-] FTP connected to [IP]
+2026-05-02 21:22:55,613 INFO [backend.app.services.bambu_ftp] [-] FTP uploading /app/data/archive/library/files/79a0b17d1e9b4184874acafd21676814.3mf (4574062 bytes) to /L014-0309_Stern_p1s_v3-11.3mf
+2026-05-02 21:22:55,727 INFO [backend.app.services.bambu_ftp] [-] FTP data channel ready in 0.1s (PASV + TLS handshake)
+2026-05-02 21:23:03,493 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] PRINT START detected - file: L028-0306_Berg_p1p_v3-11.3mf, subtask: L028-0306_Berg_p1p_v3-11, is_new: True, is_file_change: False
+2026-05-02 21:23:03,494 INFO [backend.app.main] [-] [CALLBACK] on_print_start called for printer 2, data keys: ['filename', 'subtask_name', 'remaining_time', 'raw_data', 'ams_mapping']
+2026-05-02 21:23:03,515 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Skipped trays with invalid remain% for printer 2: AMS0-T0(remain=-1), AMS0-T1(remain=-1), AMS0-T2(remain=-1), AMS0-T3(remain=-1)
+2026-05-02 21:23:03,515 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 2: mapping=None, tray_now=255, last_loaded_tray=1
+2026-05-02 21:23:03,515 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 2: mapping-related keys: {'ams_extruder_map': {'0': 0}}
+2026-05-02 21:23:03,516 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 2 AMS 0: T0(type=PLA, color=FFFF5EFF, now=?, tar=?), T1(type=PLA, color=C3B7C9FF, now=?, tar=?), T2(type=PLA, color=FFFFFFFF, now=?, tar=?), T3(type=PLA, color=1435D9FF, now=?, tar=?)
+2026-05-02 21:23:03,518 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Captured start remain% for printer 2 (1 trays): {'255-0': 0}
+2026-05-02 21:23:03,525 INFO [backend.app.main] [-] [PLATE CHECK] printer_id=2, plate_detection_enabled=False
+2026-05-02 21:23:03,525 INFO [backend.app.main] [-] [CALLBACK] Print start detected - filename: L028-0306_Berg_p1p_v3-11.3mf, subtask: L028-0306_Berg_p1p_v3-11
+2026-05-02 21:23:03,525 INFO [backend.app.main] [-] Using expected archive 175 for print (skipping duplicate)
+2026-05-02 21:23:18,474 INFO [backend.app.services.bambu_ftp] [-] FTP STOR confirmed for /L014-0309_Stern_p1s_v3-11.3mf: 226
+2026-05-02 21:23:18,475 INFO [backend.app.services.bambu_ftp] [-] FTP upload complete: /L014-0309_Stern_p1s_v3-11.3mf (4574062 bytes in 22.9s, 195 KB/s)
+2026-05-02 21:23:18,475 INFO [backend.app.services.bambu_ftp] [-] FTP mode cached for [IP]: prot_p
+2026-05-02 21:23:18,540 INFO [backend.app.main] [-] Registered expected print: printer=3, file=L014-0309_Stern_p1s_v3-11.3mf, archive=176, ams_mapping=[2, 3]
+2026-05-02 21:23:18,544 INFO [backend.app.services.print_scheduler] [-] Queue item 171: Status set to 'printing', sending print command...
+2026-05-02 21:23:18,545 INFO [backend.app.services.printer_manager] [-] PRINT COMMAND: printer=3, file=L014-0309_Stern_p1s_v3-11.3mf, caller=print_scheduler.py:298:check_queue
+2026-05-02 21:23:18,545 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Sending print command: {"print": {"sequence_id": "20000", "command": "project_file", "param": "Metadata/plate_1.gcode", "url": "ftp://L014-0309_Stern_p1s_v3-11.3mf", "file": "L014-0309_Stern_p1s_v3-11.3mf", "md5": "", "bed_type": "auto", "timelapse": false, "bed_leveling": true, "auto_bed_leveling": 1, "flow_cali": false, "vibration_cali": true, "layer_inspect": false, "use_ams": true, "cfg": "0", "extrude_cali_flag": 0, "extrude_cali_manual_mode": 0, "nozzle_offset_cali": 2, "subtask_name": "L014-0309_Stern_p1s_v3-11", "profile_id": "0", "project_id": "1780822476", "subtask_id": "1780822476", "task_id": "1780822476", "ams_mapping": [2, 3], "ams_mapping2": [{"ams_id": 0, "slot_id": 2}, {"ams_id": 0, "slot_id": 3}]}}
+2026-05-02 21:23:18,546 INFO [backend.app.services.print_scheduler] [-] Queue item 171: Print started successfully - L014-0309_Stern_p1s_v3-11.gcode.3mf
+2026-05-02 21:23:18,556 INFO [backend.app.main] [-] [CALLBACK] Injected ams_mapping into usage tracker session: [2, 3]
+2026-05-02 21:23:18,558 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 4}
+2026-05-02 21:23:18,559 INFO [backend.app.services.print_scheduler] [-] Queue: printer 1 not available — connected=True, state=FINISH, awaiting_plate_clear=False
+2026-05-02 21:23:18,559 INFO [backend.app.services.print_scheduler] [-] Queue: printer 2 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:23:18,559 INFO [backend.app.services.print_scheduler] [-] Queue: printer 3 not available — connected=True, state=FINISH, awaiting_plate_clear=False
+2026-05-02 21:23:18,562 INFO [backend.app.main] [-] [ENERGY] No smart plug for printer 2 (archive 175)
+2026-05-02 21:23:18,571 INFO [backend.app.main] [-] [SNAPSHOT] Capturing fresh frame for printer 2
+2026-05-02 21:23:18,571 INFO [backend.app.services.camera] [-] Capturing camera frame bytes from [IP] using chamber image protocol (model: P1P)
+2026-05-02 21:23:21,340 INFO [backend.app.main] [-] [SNAPSHOT] Fresh camera frame: 84826 bytes
+2026-05-02 21:23:21,341 INFO [backend.app.services.notification_service] [-] on_print_start called for printer 2 ([PRINTER])
+2026-05-02 21:23:21,344 INFO [backend.app.services.notification_service] [-] No notification providers configured for print_start event on printer 2
+2026-05-02 21:23:21,363 INFO [backend.app.main] [-] Loaded 40 printable objects for printer 2
+2026-05-02 21:23:29,287 INFO [backend.app.api.routes.printers] [45310f72] Cover: resolved plate 1 before download (subtask=L028-0306_Berg_p1p_v3-11)
+2026-05-02 21:23:29,287 INFO [backend.app.api.routes.printers] [45310f72] Cover using cached 3MF from /app/data/archive/library/files/5bebafab55a445f89572da4f18ad20a2.3mf (avoided duplicate FTP)
+2026-05-02 21:23:29,287 INFO [backend.app.api.routes.printers] [45310f72] Downloaded file size: 4518325 bytes
+2026-05-02 21:23:29,457 INFO [backend.app.api.routes.camera] [be65c6a8] Using chamber image protocol for P1S
+2026-05-02 21:23:29,457 INFO [backend.app.api.routes.camera] [be65c6a8] Camera viewer attached to printer-3 (subscribers=1)
+2026-05-02 21:23:29,458 INFO [backend.app.api.routes.camera] [be65c6a8] Starting chamber image stream for [IP] (stream_id=3-fanout, model=P1S)
+2026-05-02 21:23:29,487 INFO [backend.app.api.routes.camera] [d3b753aa] Using chamber image protocol for P1S
+2026-05-02 21:23:29,487 INFO [backend.app.api.routes.camera] [d3b753aa] Camera viewer attached to printer-1 (subscribers=1)
+2026-05-02 21:23:29,488 INFO [backend.app.api.routes.camera] [d3b753aa] Starting chamber image stream for [IP] (stream_id=1-fanout, model=P1S)
+2026-05-02 21:23:29,648 INFO [backend.app.api.routes.camera] [d30d0af5] Using chamber image protocol for P1P
+2026-05-02 21:23:29,648 INFO [backend.app.api.routes.camera] [d30d0af5] Camera viewer attached to printer-2 (subscribers=1)
+2026-05-02 21:23:29,649 INFO [backend.app.api.routes.camera] [d30d0af5] Starting chamber image stream for [IP] (stream_id=2-fanout, model=P1P)
+2026-05-02 21:23:30,421 INFO [backend.app.services.camera] [be65c6a8] Chamber image: connected to [IP]:6000
+2026-05-02 21:23:30,421 INFO [backend.app.services.camera] [d3b753aa] Chamber image: connected to [IP]:6000
+2026-05-02 21:23:30,536 INFO [backend.app.services.camera] [d30d0af5] Chamber image: connected to [IP]:6000
+2026-05-02 21:23:31,835 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] PRINT START detected - file: L014-0309_Stern_p1s_v3-11.3mf, subtask: L014-0309_Stern_p1s_v3-11, is_new: True, is_file_change: False
+2026-05-02 21:23:31,836 INFO [backend.app.main] [-] [CALLBACK] on_print_start called for printer 3, data keys: ['filename', 'subtask_name', 'remaining_time', 'raw_data', 'ams_mapping']
+2026-05-02 21:23:31,841 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Skipped trays with invalid remain% for printer 3: AMS0-T0(remain=-1), AMS0-T1(remain=-1), AMS0-T2(remain=-1), AMS0-T3(remain=-1)
+2026-05-02 21:23:31,841 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 3: mapping=None, tray_now=255, last_loaded_tray=2
+2026-05-02 21:23:31,842 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 3: mapping-related keys: {'ams_extruder_map': {'0': 0}}
+2026-05-02 21:23:31,842 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 3 AMS 0: T0(type=PLA, color=000000FF, now=?, tar=?), T1(type=PLA, color=F5ADD3FF, now=?, tar=?), T2(type=PLA, color=FFFFFFFF, now=?, tar=?), T3(type=PLA, color=42E3E6FF, now=?, tar=?)
+2026-05-02 21:23:31,844 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Captured start remain% for printer 3 (1 trays): {'255-0': 0}
+2026-05-02 21:23:31,852 INFO [backend.app.main] [-] [PLATE CHECK] printer_id=3, plate_detection_enabled=False
+2026-05-02 21:23:31,852 INFO [backend.app.main] [-] [CALLBACK] Print start detected - filename: L014-0309_Stern_p1s_v3-11.3mf, subtask: L014-0309_Stern_p1s_v3-11
+2026-05-02 21:23:31,852 INFO [backend.app.main] [-] Using expected archive 176 for print (skipping duplicate)
+2026-05-02 21:23:31,865 INFO [backend.app.main] [-] [CALLBACK] Injected ams_mapping into usage tracker session: [2, 3]
+2026-05-02 21:23:31,871 INFO [backend.app.main] [-] [ENERGY] No smart plug for printer 3 (archive 176)
+2026-05-02 21:23:31,886 INFO [backend.app.main] [-] [SNAPSHOT] Using buffered frame for printer 3: 77072 bytes
+2026-05-02 21:23:31,886 INFO [backend.app.services.notification_service] [-] on_print_start called for printer 3 ([PRINTER])
+2026-05-02 21:23:31,892 INFO [backend.app.services.notification_service] [-] No notification providers configured for print_start event on printer 3
+2026-05-02 21:23:31,910 INFO [backend.app.main] [-] Loaded 40 printable objects for printer 3
+2026-05-02 21:23:32,086 INFO [backend.app.api.routes.printers] [a1c1a39c] Cover: resolved plate 1 before download (subtask=L014-0309_Stern_p1s_v3-11)
+2026-05-02 21:23:32,087 INFO [backend.app.api.routes.printers] [a1c1a39c] Cover using cached 3MF from /app/data/archive/library/files/79a0b17d1e9b4184874acafd21676814.3mf (avoided duplicate FTP)
+2026-05-02 21:23:32,087 INFO [backend.app.api.routes.printers] [a1c1a39c] Downloaded file size: 4574062 bytes
+2026-05-02 21:23:48,578 INFO [backend.app.services.print_scheduler] [-] Queue check: found 4 pending items: [(169, 2, None, 35), (170, 2, None, 35), (172, 3, None, 32), (173, 3, None, 32)]
+2026-05-02 21:23:48,580 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 4}
+2026-05-02 21:23:48,580 INFO [backend.app.services.print_scheduler] [-] Queue: printer 2 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:23:48,580 INFO [backend.app.services.print_scheduler] [-] Queue: printer 3 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:23:49,370 INFO [backend.app.api.routes.camera] [be65c6a8] Camera viewer detached from printer-3 (subscribers=0)
+2026-05-02 21:23:49,370 INFO [backend.app.api.routes.camera] [d3b753aa] Camera viewer detached from printer-1 (subscribers=0)
+2026-05-02 21:23:49,371 INFO [backend.app.api.routes.camera] [d30d0af5] Camera viewer detached from printer-2 (subscribers=0)
+2026-05-02 21:23:49,529 INFO [backend.app.api.routes.camera] [be65c6a8] Chamber image stream cancelled (stream_id=3-fanout)
+2026-05-02 21:23:49,563 INFO [backend.app.api.routes.camera] [be65c6a8] Chamber image stream stopped for [IP] (stream_id=3-fanout)
+2026-05-02 21:23:49,564 INFO [backend.app.api.routes.camera] [ebe1fe1e] Shut down camera fan-out broadcaster for printer 3
+2026-05-02 21:23:49,564 INFO [backend.app.api.routes.camera] [ebe1fe1e] Stopped 0 camera stream(s) for printer 3
+2026-05-02 21:23:49,565 INFO [uvicorn.access] [-] [IP]:49092 - "POST /api/v1/printers/3/camera/stop HTTP/1.1" 200
+2026-05-02 21:23:49,732 INFO [backend.app.api.routes.camera] [d3b753aa] Chamber image stream cancelled (stream_id=1-fanout)
+2026-05-02 21:23:49,764 INFO [backend.app.api.routes.camera] [d3b753aa] Chamber image stream stopped for [IP] (stream_id=1-fanout)
+2026-05-02 21:23:49,765 INFO [backend.app.api.routes.camera] [59e7f139] Shut down camera fan-out broadcaster for printer 1
+2026-05-02 21:23:49,765 INFO [backend.app.api.routes.camera] [59e7f139] Stopped 0 camera stream(s) for printer 1
+2026-05-02 21:23:49,768 INFO [uvicorn.access] [-] [IP]:49092 - "POST /api/v1/printers/1/camera/stop HTTP/1.1" 200
+2026-05-02 21:23:49,869 INFO [backend.app.api.routes.camera] [d30d0af5] Chamber image stream cancelled (stream_id=2-fanout)
+2026-05-02 21:23:49,884 INFO [backend.app.api.routes.camera] [d30d0af5] Chamber image stream stopped for [IP] (stream_id=2-fanout)
+2026-05-02 21:23:49,885 INFO [backend.app.api.routes.camera] [3897bde9] Shut down camera fan-out broadcaster for printer 2
+2026-05-02 21:23:49,885 INFO [backend.app.api.routes.camera] [3897bde9] Stopped 0 camera stream(s) for printer 2
+2026-05-02 21:23:49,889 INFO [uvicorn.access] [-] [IP]:11902 - "POST /api/v1/printers/2/camera/stop HTTP/1.1" 200
+2026-05-02 21:23:49,973 INFO [uvicorn.access] [-] [IP]:49092 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-05-02 21:24:18,592 INFO [backend.app.services.print_scheduler] [-] Queue check: found 4 pending items: [(169, 2, None, 35), (170, 2, None, 35), (172, 3, None, 32), (173, 3, None, 32)]
+2026-05-02 21:24:18,595 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 4}
+2026-05-02 21:24:18,595 INFO [backend.app.services.print_scheduler] [-] Queue: printer 2 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:24:18,596 INFO [backend.app.services.print_scheduler] [-] Queue: printer 3 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:24:22,680 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Tray change during print: tray=2 at layer=0
+2026-05-02 21:24:36,910 INFO [backend.app.api.routes.websocket] [-] WebSocket client disconnected normally
+2026-05-02 21:24:38,954 INFO [uvicorn.access] [-] [IP]:4984 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-05-02 21:24:39,101 INFO [uvicorn.access] [-] [IP]:11654 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-05-02 21:24:39,119 INFO [backend.app.api.routes.websocket] [-] WebSocket client connecting...
+2026-05-02 21:24:39,119 INFO [backend.app.api.routes.websocket] [-] WebSocket client connected
+2026-05-02 21:24:39,123 INFO [backend.app.api.routes.websocket] [-] Sent initial status for 3 printers
+2026-05-02 21:24:48,609 INFO [backend.app.services.print_scheduler] [-] Queue check: found 4 pending items: [(169, 2, None, 35), (170, 2, None, 35), (172, 3, None, 32), (173, 3, None, 32)]
+2026-05-02 21:24:48,612 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 4}
+2026-05-02 21:24:48,613 INFO [backend.app.services.print_scheduler] [-] Queue: printer 2 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:24:48,613 INFO [backend.app.services.print_scheduler] [-] Queue: printer 3 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:25:18,627 INFO [backend.app.services.print_scheduler] [-] Queue check: found 4 pending items: [(169, 2, None, 35), (170, 2, None, 35), (172, 3, None, 32), (173, 3, None, 32)]
+2026-05-02 21:25:18,630 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 4}
+2026-05-02 21:25:18,630 INFO [backend.app.services.print_scheduler] [-] Queue: printer 2 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:25:18,630 INFO [backend.app.services.print_scheduler] [-] Queue: printer 3 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:25:48,644 INFO [backend.app.services.print_scheduler] [-] Queue check: found 4 pending items: [(169, 2, None, 35), (170, 2, None, 35), (172, 3, None, 32), (173, 3, None, 32)]
+2026-05-02 21:25:48,647 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 4}
+2026-05-02 21:25:48,647 INFO [backend.app.services.print_scheduler] [-] Queue: printer 2 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:25:48,648 INFO [backend.app.services.print_scheduler] [-] Queue: printer 3 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:26:10,168 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-02 21:26:16,171 INFO [backend.app.api.routes.support] [b52de4c0] Log level changed to DEBUG
+2026-05-02 21:26:16,172 INFO [backend.app.api.routes.bug_report] [b52de4c0] Bug report: enabled debug logging
+2026-05-02 21:26:16,172 DEBUG [backend.app.services.bambu_mqtt] [b52de4c0] [[SERIAL]] Requesting status update (pushall)
+2026-05-02 21:26:16,172 DEBUG [backend.app.services.bambu_mqtt] [b52de4c0] [[SERIAL]] Requesting status update (pushall)
+2026-05-02 21:26:16,173 DEBUG [backend.app.services.bambu_mqtt] [b52de4c0] [[SERIAL]] Requesting status update (pushall)
+2026-05-02 21:26:16,174 INFO [uvicorn.access] [-] [IP]:16473 - "POST /api/v1/bug-report/start-logging HTTP/1.1" 200
+2026-05-02 21:26:16,229 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: RUNNING, gcode_file: L014-0309_Stern_p1s_v3-11.3mf, subtask_name: L014-0309_Stern_p1s_v3-11
+2026-05-02 21:26:16,230 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'tray_exist_bits': 'f', 'tray_is_bbl_bits': 'f', 'tray_tar': '2', 'tray_now': '2', 'tray_pre': '2', 'tray_read_done_bits': 'f', 'tray_reading_bits': '0', 'version': 446, 'insert_flag': True, 'power_on_flag': False}
+2026-05-02 21:26:16,231 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 2
+2026-05-02 21:26:16,231 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-02 21:26:16,232 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x1001 -> extruder 0
+2026-05-02 21:26:16,232 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-02 21:26:16,232 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 768 (main=3, sub=0)
+2026-05-02 21:26:16,233 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-02 21:26:16,233 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-02 21:26:16,233 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-02 21:26:16,234 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-02 21:26:16,235 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: RUNNING, gcode_file: L028-0306_Berg_p1p_v3-11.3mf, subtask_name: L028-0306_Berg_p1p_v3-11
+2026-05-02 21:26:16,235 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-02 21:26:16,236 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'tray_exist_bits': 'f', 'tray_is_bbl_bits': 'f', 'tray_tar': '2', 'tray_now': '2', 'tray_pre': '2', 'tray_read_done_bits': 'f', 'tray_reading_bits': '0', 'version': 66, 'insert_flag': False, 'power_on_flag': False}
+2026-05-02 21:26:16,237 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: , subtask_name: L020-0200_Flagge_Österreich_p1s_v3-11_v3-4_v3-4_v3-4
+2026-05-02 21:26:16,237 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-05-02 21:26:16,237 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 2
+2026-05-02 21:26:16,238 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'tray_exist_bits': 'f', 'tray_is_bbl_bits': 'f', 'tray_tar': '255', 'tray_now': '255', 'tray_pre': '255', 'tray_read_done_bits': 'f', 'tray_reading_bits': '0', 'version': 20, 'insert_flag': True, 'power_on_flag': False}
+2026-05-02 21:26:16,239 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'disable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-02 21:26:16,239 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-02 21:26:16,240 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 255
+2026-05-02 21:26:16,241 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -43dBm
+2026-05-02 21:26:16,242 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x1001 -> extruder 0
+2026-05-02 21:26:16,243 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-02 21:26:16,244 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-02 21:26:16,246 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-02 21:26:16,247 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x1001 -> extruder 0
+2026-05-02 21:26:16,247 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: RUNNING -> RUNNING, file: L014-0309_Stern_p1s_v3-11.3mf, subtask: L014-0309_Stern_p1s_v3-11
+2026-05-02 21:26:16,249 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 768 (main=3, sub=0)
+2026-05-02 21:26:16,249 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-02 21:26:16,251 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-02 21:26:16,252 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 0 (main=0, sub=0)
+2026-05-02 21:26:16,255 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-02 21:26:16,255 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-02 21:26:16,256 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-02 21:26:16,256 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-02 21:26:16,257 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-02 21:26:16,258 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-02 21:26:16,258 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-02 21:26:16,259 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-05-02 21:26:16,259 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-02 21:26:16,260 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'disable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-02 21:26:16,260 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-02 21:26:16,261 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -42dBm
+2026-05-02 21:26:16,261 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 50336000, 'code': 131073, 'action': 0, 'timestamp': 1775938942}]
+2026-05-02 21:26:16,262 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-02 21:26:16,264 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'disable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-02 21:26:16,265 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: RUNNING -> RUNNING, file: L028-0306_Berg_p1p_v3-11.3mf, subtask: L028-0306_Berg_p1p_v3-11
+2026-05-02 21:26:16,266 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -49dBm
+2026-05-02 21:26:16,268 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-02 21:26:16,268 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: , subtask: L020-0200_Flagge_Österreich_p1s_v3-11_v3-4_v3-4_v3-4
+2026-05-02 21:26:18,248 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-02 21:26:18,249 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -39dBm
+2026-05-02 21:26:18,256 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-02 21:26:18,264 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -46dBm
+2026-05-02 21:26:18,660 INFO [backend.app.services.print_scheduler] [-] Queue check: found 4 pending items: [(169, 2, None, 35), (170, 2, None, 35), (172, 3, None, 32), (173, 3, None, 32)]
+2026-05-02 21:26:18,662 INFO [backend.app.services.print_scheduler] [-] Queue skip summary: {'manual_start': 4}
+2026-05-02 21:26:18,662 INFO [backend.app.services.print_scheduler] [-] Queue: printer 2 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
+2026-05-02 21:26:18,663 INFO [backend.app.services.print_scheduler] [-] Queue: printer 3 not available — connected=True, state=RUNNING, awaiting_plate_clear=False
