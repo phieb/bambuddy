@@ -1,0 +1,200 @@
+2026-05-08 13:53:20,980 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 13:53:21,279 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 13:53:21,279 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 13:53:21,285 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 13:53:21,634 INFO [backend.app.api.routes.cloud] get_filament_info called with 1 IDs: ['GFSNL04']
+2026-05-08 13:53:22,385 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:53:22,386 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:53:25,022 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 13:53:28,070 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 13:53:28,070 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 13:53:28,071 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 13:53:28,633 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 13:53:28,634 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 13:53:28,635 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 13:53:33,131 INFO [backend.app.services.bambu_mqtt] [[SERIAL]] Set chamber lights off (seq=12)
+2026-05-08 13:53:41,077 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 13:53:41,078 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 13:53:41,307 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 13:53:41,308 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 13:53:41,312 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 13:53:41,611 INFO [backend.app.api.routes.cloud] get_filament_info called with 1 IDs: ['GFSNL04']
+2026-05-08 13:53:50,832 INFO [backend.app.services.camera] Found ffmpeg at: /usr/bin/ffmpeg
+2026-05-08 13:53:52,399 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:53:52,401 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:54:18,143 INFO [backend.app.services.bambu_mqtt] [[SERIAL]] Set chamber lights on (seq=14)
+2026-05-08 13:54:22,415 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:54:22,417 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:54:32,454 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 13:54:32,454 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 13:54:32,455 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 13:54:32,570 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 13:54:37,761 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 13:54:42,338 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 13:54:42,339 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 13:54:42,342 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 13:54:42,599 INFO [backend.app.api.routes.cloud] get_filament_info called with 1 IDs: ['GFSNL04']
+2026-05-08 13:54:44,778 INFO [backend.app.api.routes.camera] Using chamber image protocol for P1S
+2026-05-08 13:54:44,778 INFO [backend.app.api.routes.camera] Starting chamber image stream for [IP] (stream_id=1-d802e1bd, model=P1S)
+2026-05-08 13:54:44,882 INFO [backend.app.api.routes.camera] Using chamber image protocol for P1S
+2026-05-08 13:54:44,883 INFO [backend.app.api.routes.camera] Starting chamber image stream for [IP] (stream_id=1-1c2540c1, model=P1S)
+2026-05-08 13:54:45,530 INFO [backend.app.services.camera] Chamber image: connected to [IP]:6000
+2026-05-08 13:54:45,659 INFO [backend.app.api.routes.camera] Closed chamber image connection for stream 1-d802e1bd
+2026-05-08 13:54:45,660 INFO [backend.app.api.routes.camera] Stopped 1 camera stream(s) for printer 1
+2026-05-08 13:54:45,745 INFO [backend.app.api.routes.camera] Using chamber image protocol for P1S
+2026-05-08 13:54:45,745 INFO [backend.app.api.routes.camera] Starting chamber image stream for [IP] (stream_id=1-36fc0e99, model=P1S)
+2026-05-08 13:54:46,191 WARNING [backend.app.services.camera] Chamber image: connection closed by printer
+2026-05-08 13:54:46,191 WARNING [backend.app.api.routes.camera] Chamber image stream ended for 1-d802e1bd
+2026-05-08 13:54:46,192 INFO [backend.app.api.routes.camera] Chamber image stream stopped for [IP] (stream_id=1-d802e1bd)
+2026-05-08 13:54:46,229 INFO [backend.app.services.camera] Chamber image: connected to [IP]:6000
+2026-05-08 13:54:46,942 INFO [backend.app.services.camera] Chamber image: connected to [IP]:6000
+2026-05-08 13:54:52,432 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:54:52,434 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:55:15,832 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 13:55:15,835 INFO [backend.app.api.routes.camera] Chamber image stream cancelled (stream_id=1-1c2540c1)
+2026-05-08 13:55:15,836 INFO [backend.app.api.routes.camera] Stream 1-1c2540c1 cancelled
+2026-05-08 13:55:15,836 INFO [backend.app.api.routes.camera] Chamber image stream cancelled (stream_id=1-36fc0e99)
+2026-05-08 13:55:15,837 INFO [backend.app.api.routes.camera] Stream 1-36fc0e99 cancelled
+2026-05-08 13:55:22,445 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:55:22,446 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:55:52,460 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:55:52,462 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:56:22,475 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:56:22,477 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:56:44,746 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 13:56:44,746 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 13:56:44,747 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 13:56:52,484 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:56:52,485 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:57:22,494 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:57:22,495 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:57:24,751 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 13:57:52,506 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:57:52,507 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:58:22,522 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:58:22,524 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:58:52,538 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:58:52,540 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:59:22,553 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:59:22,556 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 13:59:52,564 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 13:59:52,564 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:00:22,575 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:00:22,577 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:00:52,591 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:00:52,593 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:01:22,606 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:01:22,607 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:01:52,621 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:01:52,623 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:02:22,633 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:02:22,634 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:02:52,640 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:02:52,641 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:03:22,650 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:03:22,652 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:03:52,664 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:03:52,666 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:04:22,680 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:04:22,682 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:04:52,689 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:04:52,690 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:05:22,702 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:05:22,704 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:05:52,717 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:05:52,719 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:06:22,729 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:06:22,731 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:06:52,744 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:06:52,746 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:07:22,760 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:07:22,761 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:07:52,775 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:07:52,777 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:08:04,539 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 14:08:04,540 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 14:08:04,542 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 14:08:22,790 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:08:22,792 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:08:44,544 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 14:08:52,805 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:08:52,807 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:09:22,821 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:09:22,823 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:09:52,836 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:09:52,838 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:10:22,849 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:10:22,850 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:10:52,862 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:10:52,864 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:11:22,870 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:11:22,871 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:11:45,977 INFO [backend.app.api.routes.camera] Using chamber image protocol for P1S
+2026-05-08 14:11:45,978 INFO [backend.app.api.routes.camera] Starting chamber image stream for [IP] (stream_id=1-cebc9b96, model=P1S)
+2026-05-08 14:11:46,717 INFO [backend.app.services.camera] Chamber image: connected to [IP]:6000
+2026-05-08 14:11:46,881 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 14:11:46,882 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 14:11:46,883 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 14:11:48,025 INFO [backend.app.api.routes.camera] Using chamber image protocol for P1S
+2026-05-08 14:11:48,026 INFO [backend.app.api.routes.camera] Starting chamber image stream for [IP] (stream_id=1-795cfade, model=P1S)
+2026-05-08 14:11:48,791 INFO [backend.app.services.camera] Chamber image: connected to [IP]:6000
+2026-05-08 14:11:50,147 INFO [backend.app.api.routes.websocket] WebSocket client disconnected normally
+2026-05-08 14:11:50,148 INFO [backend.app.api.routes.camera] Chamber image stream cancelled (stream_id=1-cebc9b96)
+2026-05-08 14:11:50,148 INFO [backend.app.api.routes.camera] Chamber image stream cancelled (stream_id=1-795cfade)
+2026-05-08 14:11:50,148 INFO [backend.app.api.routes.camera] Stream 1-cebc9b96 cancelled
+2026-05-08 14:11:50,148 INFO [backend.app.api.routes.camera] Stream 1-795cfade cancelled
+2026-05-08 14:11:52,883 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:11:52,885 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:12:22,898 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:12:22,901 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:12:52,911 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:12:52,913 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:13:22,926 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:13:22,929 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:13:52,942 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:13:52,943 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:14:22,950 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:14:22,951 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:14:52,962 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:14:52,964 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:15:22,978 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:15:22,980 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:15:52,995 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:15:52,997 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:16:23,006 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:16:23,007 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:16:53,016 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:16:53,018 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:17:23,025 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:17:23,026 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:17:53,036 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:17:53,038 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:17:54,901 INFO [backend.app.api.routes.websocket] WebSocket client connecting...
+2026-05-08 14:17:54,902 INFO [backend.app.api.routes.websocket] WebSocket client connected
+2026-05-08 14:17:54,903 INFO [backend.app.api.routes.websocket] Sent initial status for 1 printers
+2026-05-08 14:17:55,286 INFO [backend.app.api.routes.cloud] get_filament_info called with 1 IDs: ['GFSNL04']
+2026-05-08 14:17:55,752 WARNING [backend.app.api.routes.cloud] Failed to get cloud preset GFSNL04 (API ID: GFSNL04): Failed to get setting detail: 400
+2026-05-08 14:18:23,051 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:18:23,053 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:18:53,067 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:18:53,069 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:19:23,080 INFO [backend.app.services.print_scheduler] Queue check: found 3 pending items: [(1, 1, 7, None), (2, 1, 9, None), (3, 1, 8, None)]
+2026-05-08 14:19:23,081 INFO [backend.app.services.print_scheduler] Queue skip summary: {'manual_start': 3}
+2026-05-08 14:19:26,420 INFO [backend.app.api.routes.support] Log level changed to DEBUG
+2026-05-08 14:19:26,420 INFO [backend.app.api.routes.bug_report] Bug report: enabled debug logging
+2026-05-08 14:19:26,421 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] Requesting status update (pushall)
+2026-05-08 14:19:26,871 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] Received gcode_state: FINISH, gcode_file: , subtask_name: kumiko-storage-basket-160-x-100-x-50mm
+2026-05-08 14:19:26,871 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '0', 'tray_exist_bits': '0', 'tray_is_bbl_bits': '0', 'tray_tar': '255', 'tray_now': '254', 'tray_pre': '254', 'tray_read_done_bits': '0', 'tray_reading_bits': '0', 'version': 3, 'insert_flag': True, 'power_on_flag': False}
+2026-05-08 14:19:26,871 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] tray_now updated: 254
+2026-05-08 14:19:26,872 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] Merged AMS data: 0 new units, 0 total
+2026-05-08 14:19:26,872 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] ams_status: 0 (main=0, sub=0)
+2026-05-08 14:19:26,872 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] Received command response: push_status
+2026-05-08 14:19:26,873 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-08 14:19:26,873 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-08 14:19:26,873 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-08 14:19:26,874 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-08 14:19:26,874 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] HMS data received: []
+2026-05-08 14:19:26,874 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'disable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-08 14:19:26,874 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] wifi_signal received: -49dBm
+2026-05-08 14:19:26,875 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-08 14:19:26,875 DEBUG [backend.app.services.bambu_mqtt] [[SERIAL]] gcode_state: FINISH -> FINISH, file: , subtask: kumiko-storage-basket-160-x-100-x-50mm
