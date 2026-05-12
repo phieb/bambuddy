@@ -1,0 +1,200 @@
+2026-05-12 11:37:33,025 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:37:33,026 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:33,026 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -75dBm
+2026-05-12 11:37:35,040 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:39,076 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:37:39,076 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:37:39,076 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:37:39,077 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:39,077 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -77dBm
+2026-05-12 11:37:41,092 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:41,092 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -75dBm
+2026-05-12 11:37:43,144 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:37:43,144 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:37:43,144 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:37:43,145 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:43,145 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -76dBm
+2026-05-12 11:37:47,160 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:37:47,160 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:37:47,160 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:37:47,160 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:47,161 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -77dBm
+2026-05-12 11:37:49,199 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: IDLE, gcode_file: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, subtask_name: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf
+2026-05-12 11:37:49,199 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:37:49,199 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:37:49,200 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:37:49,200 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:49,200 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -76dBm
+2026-05-12 11:37:49,200 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-12 11:37:49,200 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_light changed: False -> True
+2026-05-12 11:37:49,201 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> IDLE, file: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, subtask: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf
+2026-05-12 11:37:53,217 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: PREPARE, gcode_file: None, subtask_name: None
+2026-05-12 11:37:53,217 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:53,218 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: IDLE -> PREPARE, file: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, subtask: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf
+2026-05-12 11:37:57,234 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:37:57,234 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -69dBm
+2026-05-12 11:38:03,331 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: RUNNING, gcode_file: None, subtask_name: None
+2026-05-12 11:38:03,332 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:03,332 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: PREPARE -> RUNNING, file: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, subtask: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf
+2026-05-12 11:38:03,332 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Now tracking RUNNING state for 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf
+2026-05-12 11:38:03,332 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] PRINT START detected - file: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, subtask: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, is_new: True, is_file_change: False
+2026-05-12 11:38:03,333 INFO [backend.app.main] [-] [CALLBACK] on_print_start called for printer 1, data keys: ['filename', 'subtask_name', 'remaining_time', 'raw_data', 'ams_mapping']
+2026-05-12 11:38:03,335 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1: mapping=None, tray_now=255, last_loaded_tray=3
+2026-05-12 11:38:03,335 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1: mapping-related keys: {'ams_extruder_map': {'0': 0}}
+2026-05-12 11:38:03,335 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1 AMS 0: T0(type=, color=, now=?, tar=?), T1(type=PLA, color=FFFFFFFF, now=?, tar=?), T2(type=PLA, color=0078BFFF, now=?, tar=?), T3(type=PLA, color=000000FF, now=?, tar=?)
+2026-05-12 11:38:03,336 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Snapshotted 3 spool assignments for printer 1: {'0-1': 2, '0-2': 3, '0-3': 9}
+2026-05-12 11:38:03,336 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Captured start remain% for printer 1 (5 trays): {'0-0': 0, '0-1': 98, '0-2': 41, '0-3': 100, '255-0': 0}
+2026-05-12 11:38:03,338 DEBUG [backend.app.services.smart_plug_manager] [-] Smart plug 'Bambu Lab [PRINTER]' auto_on is disabled
+2026-05-12 11:38:03,340 INFO [backend.app.main] [-] [PLATE CHECK] printer_id=1, plate_detection_enabled=True
+2026-05-12 11:38:03,340 INFO [backend.app.main] [-] [PLATE CHECK] ENTERING plate detection code for printer 1
+2026-05-12 11:38:03,340 INFO [backend.app.main] [-] [PLATE CHECK] Running plate detection for printer 1
+2026-05-12 11:38:03,341 INFO [backend.app.services.camera] [-] Capturing camera frame bytes from [IP] using chamber image protocol (model: [PRINTER])
+2026-05-12 11:38:05,467 DEBUG [backend.app.main] [-] [[PRINTER]] Runtime tracking: first active detection
+2026-05-12 11:38:14,892 ERROR [backend.app.services.camera] [-] Chamber image: connection timeout to [IP]:6000
+2026-05-12 11:38:14,892 INFO [backend.app.main] [-] [PLATE CHECK] Plate is empty for printer 1, proceeding with print
+2026-05-12 11:38:14,892 INFO [backend.app.main] [-] [CALLBACK] Print start detected - filename: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, subtask: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf
+2026-05-12 11:38:14,893 INFO [backend.app.main] [-] Using expected archive 7 for print (skipping duplicate)
+2026-05-12 11:38:14,896 INFO [backend.app.main] [-] [CALLBACK] Injected ams_mapping into usage tracker session: [-1, -1, 3]
+2026-05-12 11:38:15,488 INFO [backend.app.main] [-] [ENERGY] Recorded starting energy (expected-print) for archive 7: 166.419998168945 kWh
+2026-05-12 11:38:15,492 INFO [backend.app.main] [-] [SNAPSHOT] Capturing fresh frame for printer 1
+2026-05-12 11:38:15,493 INFO [backend.app.services.camera] [-] Capturing camera frame bytes from [IP] using chamber image protocol (model: [PRINTER])
+2026-05-12 11:38:21,807 DEBUG [backend.app.services.camera] [-] Chamber image: received 79029 bytes
+2026-05-12 11:38:21,825 INFO [backend.app.main] [-] [SNAPSHOT] Fresh camera frame: 79029 bytes
+2026-05-12 11:38:21,825 INFO [backend.app.services.notification_service] [-] on_print_start called for printer 1 ([PRINTER])
+2026-05-12 11:38:21,827 INFO [backend.app.services.notification_service] [-] No notification providers configured for print_start event on printer 1
+2026-05-12 11:38:21,828 DEBUG [backend.app.services.notification_service] [-] [EMAIL] Skipping user print email (user_print_start): advanced_auth not enabled
+2026-05-12 11:38:21,830 INFO [backend.app.main] [-] Loaded 1 printable objects for printer 1
+2026-05-12 11:38:23,894 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:23,894 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 0 -> 2
+2026-05-12 11:38:23,894 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] stg_cur changed: 255 -> 54 (Waiting for heatbed temperature)
+2026-05-12 11:38:23,894 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -68dBm
+2026-05-12 11:38:25,911 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:29,955 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:32,017 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:34,013 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:35,473 DEBUG [backend.app.main] [-] [[PRINTER]] Runtime tracking: added 30s, total=37339s (10.37h)
+2026-05-12 11:38:35,476 DEBUG [backend.app.main] [-] Updated runtime for 1 printer(s)
+2026-05-12 11:38:37,707 DEBUG [backend.app.services.bambu_mqtt] [dfa400b2] [[SERIAL]] Requesting status update (pushall)
+2026-05-12 11:38:37,707 INFO [uvicorn.access] [-] [IP]:34470 - "POST /api/v1/bug-report/start-logging HTTP/1.1" 200
+2026-05-12 11:38:37,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: RUNNING, gcode_file: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, subtask_name: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf
+2026-05-12 11:38:37,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'tray_exist_bits': 'e', 'tray_is_bbl_bits': 'e', 'tray_tar': '255', 'tray_now': '255', 'tray_pre': '255', 'tray_read_done_bits': 'e', 'tray_reading_bits': '0', 'version': 24, 'insert_flag': True, 'power_on_flag': True}
+2026-05-12 11:38:37,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 255
+2026-05-12 11:38:37,798 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:38:37,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:38:37,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:38:37,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 0 (main=0, sub=0)
+2026-05-12 11:38:37,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:37,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-12 11:38:37,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-12 11:38:37,799 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-12 11:38:37,800 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-12 11:38:37,800 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-05-12 11:38:37,800 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'disable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-12 11:38:37,800 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -68dBm
+2026-05-12 11:38:37,800 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-12 11:38:37,800 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: RUNNING -> RUNNING, file: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf, subtask: 3x1x1_LU_-_Topped_Rail_-_MultiBin_Shell.3mf
+2026-05-12 11:38:39,808 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:39,808 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 2 -> 1
+2026-05-12 11:38:39,808 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -72dBm
+2026-05-12 11:38:43,853 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:43,853 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -69dBm
+2026-05-12 11:38:45,882 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:47,921 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:47,921 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 1 -> 0
+2026-05-12 11:38:49,954 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:49,955 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 0 -> 2
+2026-05-12 11:38:49,955 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -68dBm
+2026-05-12 11:38:54,015 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'tray_tar': '2'}
+2026-05-12 11:38:54,015 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS partial update (no tray data)
+2026-05-12 11:38:54,015 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 258 (main=1, sub=2)
+2026-05-12 11:38:54,015 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:56,047 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:38:58,099 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:02,141 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:04,172 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:05,478 DEBUG [backend.app.main] [-] [[PRINTER]] Runtime tracking: added 30s, total=37369s (10.38h)
+2026-05-12 11:39:05,482 DEBUG [backend.app.main] [-] Updated runtime for 1 printer(s)
+2026-05-12 11:39:06,200 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:06,200 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 2 -> 0
+2026-05-12 11:39:06,201 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -71dBm
+2026-05-12 11:39:10,254 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 261 (main=1, sub=5)
+2026-05-12 11:39:10,254 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:10,254 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -68dBm
+2026-05-12 11:39:12,283 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'tray_now': '2', 'version': 25}
+2026-05-12 11:39:12,284 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Tray change during print: tray=2 at layer=0
+2026-05-12 11:39:12,284 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 2
+2026-05-12 11:39:12,284 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS partial update (no tray data)
+2026-05-12 11:39:12,284 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:14,330 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:18,368 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:20,400 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 262 (main=1, sub=6)
+2026-05-12 11:39:20,400 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:22,444 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:22,444 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 0 -> 2
+2026-05-12 11:39:26,493 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'tray_pre': '2'}
+2026-05-12 11:39:26,494 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS partial update (no tray data)
+2026-05-12 11:39:26,494 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 768 (main=3, sub=0)
+2026-05-12 11:39:26,494 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:28,535 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:30,559 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:34,624 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:39:34,624 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:39:34,625 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:39:34,625 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:34,625 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 2 -> 0
+2026-05-12 11:39:35,484 DEBUG [backend.app.main] [-] [[PRINTER]] Runtime tracking: added 30s, total=37399s (10.39h)
+2026-05-12 11:39:35,488 DEBUG [backend.app.main] [-] Updated runtime for 1 printer(s)
+2026-05-12 11:39:36,659 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:38,719 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:39:38,719 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:39:38,719 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:39:38,719 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:40,748 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:39:40,749 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:39:40,749 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:39:40,749 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:44,802 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:39:44,803 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:39:44,803 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:39:44,803 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:46,854 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:39:46,854 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:39:46,854 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:39:46,854 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:48,878 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:52,921 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:54,953 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:39:56,991 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:39:56,991 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:39:56,991 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:39:56,991 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:40:01,037 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:40:03,083 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:40:03,084 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:40:03,084 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:40:03,084 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:40:03,084 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 0 -> 2
+2026-05-12 11:40:05,149 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:40:05,149 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:40:05,150 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:40:05,150 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:40:05,490 DEBUG [backend.app.main] [-] [[PRINTER]] Runtime tracking: added 30s, total=37429s (10.40h)
+2026-05-12 11:40:05,494 DEBUG [backend.app.main] [-] Updated runtime for 1 printer(s)
+2026-05-12 11:40:09,205 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:40:09,206 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:40:09,206 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:40:09,206 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:40:11,243 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-12 11:40:11,243 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS 0 info=0x2003 -> extruder 0
+2026-05-12 11:40:11,243 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_extruder_map: {'0': 0}
+2026-05-12 11:40:11,244 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-12 11:40:13,028 INFO [backend.app.api.routes.support] [e67e902f] Log level changed to INFO
+2026-05-12 11:40:13,028 INFO [uvicorn.access] [-] [IP]:35604 - "POST /api/v1/support/debug-logging HTTP/1.1" 200
+2026-05-12 11:41:52,504 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-12 11:46:08,298 INFO [backend.app.services.mqtt_relay] [d5db589a] MQTT relay disabled
+2026-05-12 11:46:08,302 INFO [uvicorn.access] [-] [IP]:38996 - "PUT /api/v1/settings/ HTTP/1.1" 200
+2026-05-12 11:46:52,510 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-12 11:47:08,857 INFO [backend.app.main] [-] [SNAPSHOT] Capturing fresh frame for printer 1
+2026-05-12 11:47:08,857 INFO [backend.app.services.camera] [-] Capturing camera frame bytes from [IP] using chamber image protocol (model: [PRINTER])
+2026-05-12 11:47:10,651 INFO [backend.app.main] [-] [SNAPSHOT] Fresh camera frame: 59625 bytes
+2026-05-12 11:47:33,349 INFO [uvicorn.access] [-] [IP]:39818 - "POST /api/v1/slicer/bundles HTTP/1.1" 503
