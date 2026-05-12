@@ -1,0 +1,200 @@
+2026-05-12 22:54:10,935 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=[PRINTER], prot_c=False)
+2026-05-12 22:54:10,939 WARNING [backend.app.services.bambu_ftp] [-] Failed to delete /HESSBH_GENERATION_CHIMIK.gcode: 550 Delete operation failed.
+2026-05-12 22:54:14,543 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=[PRINTER], prot_c=False)
+2026-05-12 22:54:14,548 WARNING [backend.app.services.bambu_ftp] [-] Failed to delete /HESSBH_GENERATION_CHIMIK.gcode: 550 Delete operation failed.
+2026-05-12 22:54:14,553 WARNING [backend.app.main] [-] SD card cleanup failed after 3 attempts for /HESSBH_GENERATION_CHIMIK.gcode (file may linger on SD card)
+2026-05-12 22:54:14,553 INFO [backend.app.main] [-] [TIMING] SD card cleanup: 11.322s elapsed
+2026-05-12 22:54:14,555 INFO [backend.app.main] [-] Updated queue item 10 status to cancelled
+2026-05-12 22:54:14,559 INFO [backend.app.main] [-] [TIMING] Queue item update: 11.328s elapsed
+2026-05-12 22:54:14,561 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] on_print_complete: printer=1, archive=10, session=yes, ams_mapping=[1, 3]
+2026-05-12 22:54:14,561 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT COMPLETE printer 1: mapping=[1, 3], tray_now=1, last_loaded_tray=1
+2026-05-12 22:54:14,563 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: archive 10, filament_usage=[{'slot_id': 1, 'used_g': 383.61, 'type': 'PLA', 'color': '#000000'}, {'slot_id': 2, 'used_g': 21.65, 'type': 'PLA', 'color': '#FEC600'}]
+2026-05-12 22:54:14,563 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: slot_to_tray=[1, 3] (source: print_cmd)
+2026-05-12 22:54:14,563 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: using last_progress=1.0 (firmware reset current to 0)
+2026-05-12 22:54:14,563 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: using last_layer_num=1 (firmware reset current to 0)
+2026-05-12 22:54:15,904 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: slot_id=1 -> global_tray=1 -> AMS0-T1 (used_g=383.6, tray_now_override=None)
+2026-05-12 22:54:15,912 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Spool 33 consumed 11.7g (3MF per-layer, print_cmd_map) on printer 1 AMS0-T1 (cancelled)
+2026-05-12 22:54:15,912 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] 3MF: slot_id=2 -> global_tray=3 -> AMS0-T3 (used_g=21.6, tray_now_override=None)
+2026-05-12 22:54:15,945 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Spool 13 consumed 0.2g (3MF scaled 1%, print_cmd_map) on printer 1 AMS0-T3 (cancelled)
+2026-05-12 22:54:15,946 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] AMS0-T0: not in print mapping/tray_change_log — skipping fallback for printer 1
+2026-05-12 22:54:15,947 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] AMS0-T2: not in print mapping/tray_change_log — skipping fallback for printer 1
+2026-05-12 22:54:15,947 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] AMS1-T0: not in print mapping/tray_change_log — skipping fallback for printer 1
+2026-05-12 22:54:15,947 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] AMS1-T1: not in print mapping/tray_change_log — skipping fallback for printer 1
+2026-05-12 22:54:15,948 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] AMS128-T0: not in print mapping/tray_change_log — skipping fallback for printer 1
+2026-05-12 22:54:15,949 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] VT254: not in print mapping/tray_change_log — skipping fallback for printer 1
+2026-05-12 22:54:15,978 INFO [backend.app.main] [-] [TIMING] Usage tracker: 12.746s elapsed
+2026-05-12 22:54:15,991 INFO [backend.app.main] [-] [TIMING] Filament usage tracking: 12.760s elapsed
+2026-05-12 22:54:15,991 INFO [backend.app.main] [-] [TIMING] Archive lookup: 12.760s elapsed
+2026-05-12 22:54:15,991 INFO [backend.app.main] [-] [ARCHIVE] Updating archive 10 status...
+2026-05-12 22:54:15,992 INFO [backend.app.main] [-] [ARCHIVE] failure_reason='User cancelled' (status=cancelled)
+2026-05-12 22:54:16,025 INFO [backend.app.main] [-] [ARCHIVE] Archive 10 status updated to cancelled, failure_reason=User cancelled
+2026-05-12 22:54:16,026 INFO [backend.app.main] [-] [ARCHIVE] WebSocket notification sent for archive 10
+2026-05-12 22:54:16,026 INFO [backend.app.main] [-] [TIMING] Archive status update: 12.795s elapsed
+2026-05-12 22:54:16,041 INFO [backend.app.main] [-] [PRINT_LOG] Log entry written for archive 10
+2026-05-12 22:54:16,041 INFO [backend.app.main] [-] [TIMING] Print log entry: 12.810s elapsed
+2026-05-12 22:54:16,041 INFO [backend.app.main] [-] [TIMING] Background tasks scheduled (energy, photo): 12.810s elapsed
+2026-05-12 22:54:16,041 INFO [backend.app.main] [-] [TIMING] All background tasks scheduled: 12.810s elapsed
+2026-05-12 22:54:16,042 INFO [backend.app.main] [-] [CALLBACK] on_print_complete finished for printer 1, archive 10
+2026-05-12 22:54:16,042 INFO [backend.app.main] [-] [ENERGY-BG] Starting energy calculation for archive 10
+2026-05-12 22:54:16,042 INFO [backend.app.main] [-] [PHOTO-BG] Starting finish photo capture for archive 10
+2026-05-12 22:54:16,043 INFO [backend.app.main] [-] [AUTO-OFF-BG] Starting smart plug automation for printer 1
+2026-05-12 22:54:16,043 INFO [backend.app.services.smart_plug_manager] [-] Print on printer 1 ended with status 'cancelled', skipping auto-off to allow investigation
+2026-05-12 22:54:16,043 INFO [backend.app.main] [-] [AUTO-OFF-BG] Completed
+2026-05-12 22:54:16,044 INFO [backend.app.main] [-] [LAYER-TL] Cancelled layer timelapse for printer 1 (status: cancelled)
+2026-05-12 22:54:16,057 INFO [backend.app.main] [-] [ENERGY-BG] No start kWh recorded for archive 10
+2026-05-12 22:54:16,083 INFO [backend.app.main] [-] [PHOTO-BG] Using buffered frame from active stream
+2026-05-12 22:54:16,102 INFO [backend.app.main] [-] [PHOTO-BG] Saved buffered frame: finish_20260512_225416_1c671ace.jpg
+2026-05-12 22:54:16,111 INFO [backend.app.main] [-] [PHOTO-BG] Saved: finish_20260512_225416_1c671ace.jpg
+2026-05-12 22:54:16,112 INFO [backend.app.main] [-] [PHOTO-NOTIFY] Photo task returned: finish_20260512_225416_1c671ace.jpg
+2026-05-12 22:54:16,112 INFO [backend.app.main] [-] [NOTIFY-BG] Starting notifications for printer 1, photo=finish_20260512_225416_1c671ace.jpg
+2026-05-12 22:54:16,117 INFO [backend.app.main] [-] [NOTIFY-BG] Loaded finish photo bytes: 148538 bytes
+2026-05-12 22:54:16,117 INFO [backend.app.services.notification_service] [-] on_print_complete called for printer 1 ([PRINTER]), status=cancelled
+2026-05-12 22:54:16,120 INFO [backend.app.services.notification_service] [-] Found 1 providers for on_print_stopped: ['Notifications']
+2026-05-12 22:54:16,457 INFO [backend.app.services.notification_service] [-] Queued notification for digest: print_stopped for provider Notifications
+2026-05-12 22:54:16,461 INFO [backend.app.services.notification_service] [-] Sent notification via Notifications
+2026-05-12 22:54:16,461 INFO [backend.app.main] [-] [NOTIFY-BG] Completed
+2026-05-12 22:54:30,865 INFO [backend.app.api.routes.camera] [8a3220a2] Camera viewer detached from printer-1 (subscribers=0)
+2026-05-12 22:54:30,865 INFO [backend.app.api.routes.camera] [8a542105] Camera viewer detached from printer-1 (subscribers=0)
+2026-05-12 22:54:30,865 INFO [backend.app.api.routes.camera] [93b88a34] Camera viewer detached from printer-1 (subscribers=0)
+2026-05-12 22:54:30,865 INFO [backend.app.api.routes.camera] [8a3220a2] Camera stream cancelled (stream_id=1-fanout)
+2026-05-12 22:54:32,866 WARNING [backend.app.api.routes.camera] [8a3220a2] ffmpeg didn't terminate gracefully, killing (stream_id=1-fanout)
+2026-05-12 22:54:53,360 INFO [backend.app.services.mqtt_relay] [228095ac] MQTT relay disabled
+2026-05-12 22:54:53,363 INFO [uvicorn.access] [-] [IP]:37070 - "PUT /api/v1/settings/ HTTP/1.1" 200
+2026-05-12 22:54:54,605 INFO [backend.app.api.routes.camera] [73311e9a] Using RTSP protocol for [PRINTER]
+2026-05-12 22:54:54,606 INFO [backend.app.api.routes.camera] [73311e9a] Camera viewer attached to printer-1 (subscribers=1)
+2026-05-12 22:54:54,607 INFO [backend.app.api.routes.camera] [73311e9a] Starting RTSP camera stream for [IP] (stream_id=1-fanout, model=[PRINTER], fps=15)
+2026-05-12 22:54:55,456 INFO [backend.app.services.firmware_check] [70acadbd] Got Bambu Lab build ID: T3V8iVAkjHwVRd4TmOpG_
+2026-05-12 22:55:18,839 INFO [backend.app.api.routes.camera] [73311e9a] Camera viewer detached from printer-1 (subscribers=0)
+2026-05-12 22:55:18,839 INFO [backend.app.api.routes.camera] [73311e9a] Camera stream cancelled (stream_id=1-fanout)
+2026-05-12 22:55:20,841 WARNING [backend.app.api.routes.camera] [73311e9a] ffmpeg didn't terminate gracefully, killing (stream_id=1-fanout)
+2026-05-12 22:55:20,991 INFO [backend.app.api.routes.camera] [e06dd9e0] Using RTSP protocol for [PRINTER]
+2026-05-12 22:55:20,991 INFO [backend.app.api.routes.camera] [e06dd9e0] Camera viewer attached to printer-1 (subscribers=1)
+2026-05-12 22:55:20,992 INFO [backend.app.api.routes.camera] [e06dd9e0] Starting RTSP camera stream for [IP] (stream_id=1-fanout, model=[PRINTER], fps=15)
+2026-05-12 22:55:33,635 INFO [backend.app.api.routes.camera] [e06dd9e0] Camera viewer detached from printer-1 (subscribers=0)
+2026-05-12 22:55:33,635 INFO [backend.app.api.routes.camera] [e06dd9e0] Camera stream cancelled (stream_id=1-fanout)
+2026-05-12 22:55:35,635 WARNING [backend.app.api.routes.camera] [e06dd9e0] ffmpeg didn't terminate gracefully, killing (stream_id=1-fanout)
+2026-05-12 22:55:55,878 INFO [backend.app.api.routes.camera] [-] Cleaned up 1 orphaned camera stream(s)
+2026-05-12 22:56:06,505 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 22:56:41,501 INFO [backend.app.api.routes.camera] [42cab72b] Using RTSP protocol for [PRINTER]
+2026-05-12 22:56:41,501 INFO [backend.app.api.routes.camera] [42cab72b] Camera viewer attached to printer-1 (subscribers=1)
+2026-05-12 22:56:41,503 INFO [backend.app.api.routes.camera] [42cab72b] Starting RTSP camera stream for [IP] (stream_id=1-fanout, model=[PRINTER], fps=15)
+2026-05-12 22:56:52,864 INFO [backend.app.api.routes.camera] [42cab72b] Camera viewer detached from printer-1 (subscribers=0)
+2026-05-12 22:56:52,864 INFO [backend.app.api.routes.camera] [42cab72b] Camera stream cancelled (stream_id=1-fanout)
+2026-05-12 22:56:54,866 WARNING [backend.app.api.routes.camera] [42cab72b] ffmpeg didn't terminate gracefully, killing (stream_id=1-fanout)
+2026-05-12 22:56:55,880 INFO [backend.app.api.routes.camera] [-] Cleaned up 1 orphaned camera stream(s)
+2026-05-12 22:57:08,972 INFO [backend.app.api.routes.camera] [9f30fbad] Using RTSP protocol for [PRINTER]
+2026-05-12 22:57:08,972 INFO [backend.app.api.routes.camera] [9f30fbad] Camera viewer attached to printer-1 (subscribers=1)
+2026-05-12 22:57:08,974 INFO [backend.app.api.routes.camera] [9f30fbad] Starting RTSP camera stream for [IP] (stream_id=1-fanout, model=[PRINTER], fps=15)
+2026-05-12 22:58:28,954 INFO [backend.app.api.routes.camera] [9f30fbad] Camera viewer detached from printer-1 (subscribers=0)
+2026-05-12 22:58:28,954 INFO [backend.app.api.routes.camera] [9f30fbad] Camera stream cancelled (stream_id=1-fanout)
+2026-05-12 22:58:30,954 WARNING [backend.app.api.routes.camera] [9f30fbad] ffmpeg didn't terminate gracefully, killing (stream_id=1-fanout)
+2026-05-12 22:58:35,506 INFO [backend.app.api.routes.print_queue] [b6c7d81d] Added archive 10 to queue for 1
+2026-05-12 22:58:35,509 INFO [uvicorn.access] [-] [IP]:58470 - "POST /api/v1/queue/ HTTP/1.1" 200
+2026-05-12 22:58:36,680 INFO [backend.app.api.routes.camera] [11c2bbf1] Using RTSP protocol for [PRINTER]
+2026-05-12 22:58:36,680 INFO [backend.app.api.routes.camera] [11c2bbf1] Camera viewer attached to printer-1 (subscribers=1)
+2026-05-12 22:58:36,683 INFO [backend.app.api.routes.camera] [11c2bbf1] Starting RTSP camera stream for [IP] (stream_id=1-fanout, model=[PRINTER], fps=15)
+2026-05-12 22:58:37,464 INFO [uvicorn.access] [-] [IP]:58428 - "POST /api/v1/printers/1/clear-plate HTTP/1.1" 200
+2026-05-12 22:58:46,996 INFO [backend.app.services.print_scheduler] [-] Queue check: found 1 pending items: [(15, 1, 10, None)]
+2026-05-12 22:58:46,996 INFO [backend.app.services.print_scheduler] [-] Starting queue item 15
+2026-05-12 22:58:47,000 INFO [backend.app.services.print_scheduler] [-] Queue item 15: FTP upload starting - printer=[PRINTER] ([PRINTER]), ip=[IP], file=HESSBH_GENERATION_CHIMIK.3mf, local_path=/app/data/archive/unassigned/20260512_154217_HESSBH GENERATION CHIMIK/HESSBH GENERATION CHIMIK.gcode.3mf, retry_enabled=True, retry_count=3, timeout=30.0
+2026-05-12 22:58:48,615 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=[PRINTER], prot_c=False)
+2026-05-12 22:58:48,619 WARNING [backend.app.services.bambu_ftp] [-] Failed to delete /HESSBH_GENERATION_CHIMIK.3mf: 550 Delete operation failed.
+2026-05-12 22:58:48,624 INFO [backend.app.services.bambu_ftp] [-] FTP connecting to [IP] for upload (model=[PRINTER], mode=prot_p, socket_timeout=30.0s)...
+2026-05-12 22:58:50,207 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=[PRINTER], prot_c=False)
+2026-05-12 22:58:50,207 INFO [backend.app.services.bambu_ftp] [-] FTP connected to [IP]
+2026-05-12 22:58:50,208 INFO [backend.app.services.bambu_ftp] [-] FTP uploading /app/data/archive/unassigned/20260512_154217_HESSBH GENERATION CHIMIK/HESSBH GENERATION CHIMIK.gcode.3mf (4079139 bytes) to /HESSBH_GENERATION_CHIMIK.3mf
+2026-05-12 22:58:50,253 INFO [backend.app.services.bambu_ftp] [-] FTP data channel ready in 0.0s (PASV + TLS handshake)
+2026-05-12 22:58:50,941 WARNING [backend.app.services.bambu_ftp] [-] FTP STOR confirmation not received for /HESSBH_GENERATION_CHIMIK.3mf (proceeding): 426 Failure reading network stream. (error_temp)
+2026-05-12 22:58:50,941 INFO [backend.app.services.bambu_ftp] [-] FTP upload complete: /HESSBH_GENERATION_CHIMIK.3mf (4079139 bytes in 0.7s, 5434 KB/s)
+2026-05-12 22:58:50,941 INFO [backend.app.services.bambu_ftp] [-] FTP mode cached for [IP]: prot_p
+2026-05-12 22:58:50,959 INFO [backend.app.main] [-] Registered expected print: printer=1, file=HESSBH_GENERATION_CHIMIK.3mf, archive=10, ams_mapping=[2, 3]
+2026-05-12 22:58:50,962 INFO [backend.app.services.print_scheduler] [-] Queue item 15: Status set to 'printing', sending print command...
+2026-05-12 22:58:50,962 INFO [backend.app.services.printer_manager] [-] PRINT COMMAND: printer=1, file=HESSBH_GENERATION_CHIMIK.3mf, caller=print_scheduler.py:295:check_queue
+2026-05-12 22:58:50,962 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Sending print command: {"print": {"sequence_id": "20000", "command": "project_file", "param": "Metadata/plate_1.gcode", "url": "ftp://HESSBH_GENERATION_CHIMIK.3mf", "file": "HESSBH_GENERATION_CHIMIK.3mf", "md5": "", "bed_type": "auto", "timelapse": 1, "bed_leveling": 1, "auto_bed_leveling": 1, "flow_cali": 1, "vibration_cali": 1, "layer_inspect": 1, "use_ams": true, "cfg": "0", "extrude_cali_flag": 0, "extrude_cali_manual_mode": 0, "nozzle_offset_cali": 2, "subtask_name": "HESSBH_GENERATION_CHIMIK", "profile_id": "0", "project_id": "503071246", "subtask_id": "503071246", "task_id": "503071246", "ams_mapping": [2, 3], "ams_mapping2": [{"ams_id": 0, "slot_id": 2}, {"ams_id": 0, "slot_id": 3}]}}
+2026-05-12 22:58:50,963 INFO [backend.app.services.print_scheduler] [-] Queue item 15: Print started successfully - HESSBH GENERATION CHIMIK.gcode.3mf
+2026-05-12 22:58:50,966 INFO [backend.app.services.print_scheduler] [-] Queue: printer 1 not available — connected=True, state=FAILED, awaiting_plate_clear=False
+2026-05-12 22:58:50,969 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Captured ams_mapping from print command: [2, 3]
+2026-05-12 22:58:57,220 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] PRINT START detected - file: /data/Metadata/plate_1.gcode, subtask: HESSBH_GENERATION_CHIMIK, is_new: True, is_file_change: False
+2026-05-12 22:58:57,220 INFO [backend.app.main] [-] [CALLBACK] on_print_start called for printer 1, data keys: ['filename', 'subtask_name', 'remaining_time', 'raw_data', 'ams_mapping']
+2026-05-12 22:58:57,224 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Skipped trays with invalid remain% for printer 1: AMS1-T2(remain=-1), AMS1-T3(remain=-1)
+2026-05-12 22:58:57,224 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1: mapping=[2, 3], tray_now=1, last_loaded_tray=1
+2026-05-12 22:58:57,224 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1: mapping-related keys: {'mapping': [2, 3]}
+2026-05-12 22:58:57,224 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1 AMS 0: T0(type=PLA, color=FFFFFFFF, now=?, tar=?), T1(type=PLA, color=FF6A13FF, now=?, tar=?), T2(type=PLA, color=000000FF, now=?, tar=?), T3(type=PLA, color=FEC600FF, now=?, tar=?)
+2026-05-12 22:58:57,224 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1 AMS 1: T0(type=PETG, color=FFFFFFFF, now=?, tar=?), T1(type=PETG, color=000000FF, now=?, tar=?), T2(type=, color=, now=?, tar=?), T3(type=, color=, now=?, tar=?)
+2026-05-12 22:58:57,224 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1 AMS 128: T0(type=ABS, color=FFFFFFFF, now=?, tar=?)
+2026-05-12 22:58:57,225 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Snapshotted 7 spool assignments for printer 1: {'0-0': 5, '0-1': 33, '0-2': 32, '0-3': 13, '1-0': 3, '1-1': 4, '128-0': 8}
+2026-05-12 22:58:57,225 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Captured start remain% for printer 1 (9 trays): {'0-0': 28, '0-1': 86, '0-2': 100, '0-3': 70, '1-0': 100, '1-1': 74, '128-0': 100, '255-0': 0, '255-1': 0}
+2026-05-12 22:58:57,226 INFO [backend.app.services.smart_plug_manager] [-] Print started on printer 1, turning on plug '[PRINTER]'
+2026-05-12 22:58:57,398 INFO [backend.app.api.routes.printers] [7675665b] Cover: resolved plate 1 before download (subtask=HESSBH_GENERATION_CHIMIK)
+2026-05-12 22:58:57,399 INFO [backend.app.api.routes.printers] [7675665b] Cover using cached 3MF from /app/data/archive/unassigned/20260512_154217_HESSBH GENERATION CHIMIK/HESSBH GENERATION CHIMIK.gcode.3mf (avoided duplicate FTP)
+2026-05-12 22:58:57,399 INFO [backend.app.api.routes.printers] [7675665b] Downloaded file size: 4079139 bytes
+2026-05-12 22:58:58,292 INFO [backend.app.services.homeassistant] [-] Turned ON HA entity '[PRINTER]' (switch.x2d)
+2026-05-12 22:58:58,294 INFO [backend.app.main] [-] [PLATE CHECK] printer_id=1, plate_detection_enabled=False
+2026-05-12 22:58:58,294 INFO [backend.app.main] [-] [CALLBACK] Print start detected - filename: /data/Metadata/plate_1.gcode, subtask: HESSBH_GENERATION_CHIMIK
+2026-05-12 22:58:58,294 INFO [backend.app.main] [-] Using expected archive 10 for print (skipping duplicate)
+2026-05-12 22:58:58,312 WARNING [backend.app.main] [-] [ENERGY] No 'total' in energy response for archive 10
+2026-05-12 22:58:58,316 INFO [backend.app.main] [-] [SNAPSHOT] Using buffered frame for printer 1: 144096 bytes
+2026-05-12 22:58:58,316 INFO [backend.app.services.notification_service] [-] on_print_start called for printer 1 ([PRINTER])
+2026-05-12 22:58:58,318 INFO [backend.app.services.notification_service] [-] Found 1 providers for print_start: ['Notifications']
+2026-05-12 22:58:58,654 INFO [backend.app.services.notification_service] [-] Queued notification for digest: print_start for provider Notifications
+2026-05-12 22:58:58,658 INFO [backend.app.services.notification_service] [-] Sent notification via Notifications
+2026-05-12 22:58:58,662 INFO [backend.app.services.notification_service] [-] [EMAIL] Sending user print email: event=user_print_start, user=Ad ([EMAIL]), printer=[PRINTER], file=HESSBH_GENERATION_CHIMIK
+2026-05-12 22:58:59,545 INFO [backend.app.services.email_service] [-] Email sent successfully to [EMAIL]
+2026-05-12 22:58:59,546 INFO [backend.app.services.email_service] [-] Sent user_print_start notification email to [EMAIL]
+2026-05-12 22:58:59,546 INFO [backend.app.services.notification_service] [-] [EMAIL] User print email sent: event=user_print_start → [EMAIL]
+2026-05-12 22:58:59,549 INFO [backend.app.main] [-] Loaded 45 printable objects for printer 1
+2026-05-12 23:00:49,144 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Tray change during print: tray=2 at layer=0
+2026-05-12 23:01:06,515 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:06:06,521 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:11:06,527 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:16:06,536 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:21:06,545 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:26:06,552 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:31:06,559 INFO [backend.app.main] [-] Sending temperature alarm for [PRINTER] AMS-A: 45.0°C > 35.0°C
+2026-05-12 23:31:06,565 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:36:06,572 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:41:06,578 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:44:46,155 INFO [backend.app.main] [-] [SNAPSHOT] Using buffered frame for printer 1: 73673 bytes
+2026-05-12 23:44:46,478 INFO [backend.app.services.notification_service] [-] Queued notification for digest: first_layer_complete for provider Notifications
+2026-05-12 23:44:46,482 INFO [backend.app.services.notification_service] [-] Sent notification via Notifications
+2026-05-12 23:46:06,585 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:51:06,592 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-12 23:56:06,598 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-13 00:00:55,469 INFO [backend.app.main] [-] Evicted 1 stale expected-print entries (TTL=7200s)
+2026-05-13 00:01:06,604 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-13 00:06:06,610 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-13 00:11:06,617 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-13 00:11:29,062 INFO [uvicorn.access] [-] [IP]:47280 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-05-13 00:11:29,198 INFO [backend.app.api.routes.camera] [af11f6a5] Using RTSP protocol for [PRINTER]
+2026-05-13 00:11:29,198 INFO [backend.app.api.routes.camera] [af11f6a5] Camera viewer attached to printer-1 (subscribers=2)
+2026-05-13 00:11:29,207 INFO [backend.app.api.routes.printers] [16cd5fc0] Cover: resolved plate 1 before download (subtask=HESSBH_GENERATION_CHIMIK)
+2026-05-13 00:11:30,031 INFO [backend.app.services.firmware_check] [8fe6bf71] Got Bambu Lab build ID: T3V8iVAkjHwVRd4TmOpG_
+2026-05-13 00:16:06,623 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-13 00:21:06,629 INFO [backend.app.main] [-] Recorded 3 AMS sensor history entries
+2026-05-13 00:21:21,890 INFO [backend.app.api.routes.support] [dd64de5e] Log level changed to DEBUG
+2026-05-13 00:21:21,891 INFO [backend.app.api.routes.bug_report] [dd64de5e] Bug report: enabled debug logging
+2026-05-13 00:21:21,891 DEBUG [backend.app.services.bambu_mqtt] [dd64de5e] [[SERIAL]] Requesting status update (pushall)
+2026-05-13 00:21:21,891 INFO [uvicorn.access] [-] [IP]:35044 - "POST /api/v1/bug-report/start-logging HTTP/1.1" 200
+2026-05-13 00:21:22,443 DEBUG [backend.app.services.print_scheduler] [-] Printer 1: not idle — state=RUNNING
+2026-05-13 00:21:22,443 DEBUG [backend.app.services.print_scheduler] [-] Auto-drying: printer 1 skipped — not idle
+2026-05-13 00:21:22,463 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Found xcam inside print data: {'allow_skip_parts': False, 'buildplate_marker_detector': True, 'cfg': 8089015, 'first_layer_inspector': True, 'halt_print_sensitivity': 'medium', 'print_halt': True, 'printing_monitor': True, 'spaghetti_detector': True}
+2026-05-13 00:21:22,463 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Parsing xcam data - all fields: ['allow_skip_parts', 'buildplate_marker_detector', 'cfg', 'first_layer_inspector', 'halt_print_sensitivity', 'print_halt', 'printing_monitor', 'spaghetti_detector']
+2026-05-13 00:21:22,463 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] xcam cfg bitmask: 8089015 (binary: 0b11110110110110110110111)
+2026-05-13 00:21:22,463 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: RUNNING, gcode_file: /data/Metadata/plate_1.gcode, subtask_name: HESSBH_GENERATION_CHIMIK
+2026-05-13 00:21:22,463 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '13', 'ams_exist_bits_raw': '13', 'cali_id': 255, 'cali_stat': 0, 'cfs': [2, 3, 4, 5, 7], 'insert_flag': True, 'power_on_flag': True, 'tray_exist_bits': '1003f', 'tray_hall_out_bits': '4', 'tray_is_bbl_bits': '1003f', 'tray_now': '2', 'tray_pre': '2', 'tray_read_done_bits': '1003f', 'tray_reading_bits': '0', 'tray_tar': '2', 'unbind_ams_stat': 0, 'version': 1266}
+2026-05-13 00:21:22,463 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 2
+2026-05-13 00:21:22,463 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 3 new units, 3 total
+2026-05-13 00:21:22,463 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 768 (main=3, sub=0)
+2026-05-13 00:21:22,464 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-13 00:21:22,464 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] device.extruder.state=33042 (switch_state bits 12-14: 0)
+2026-05-13 00:21:22,464 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] info.temp direct: 35°C (heater OFF)
+2026-05-13 00:21:22,464 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ctc_info keys: ['temp']
+2026-05-13 00:21:22,464 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=35.0, heating=False, respect_local=False
+2026-05-13 00:21:22,464 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 35.0, target: 0.0, heating: False
+2026-05-13 00:21:22,464 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: [{'attr': 83887616, 'code': 131184, 'ts_boot': 28497, 'ts_unix': '20260512202539'}, {'attr': 201326848, 'code': 131099, 'ts_boot': 439053, 'ts_unix': '20260512203229'}, {'attr': 83886848, 'code': 131091, 'ts_boot': 11506875, 'ts_unix': '20260512233657'}, {'attr': 83886848, 'code': 65546, 'ts_boot': 16481753, 'ts_unix': '20260513005952'}]
+2026-05-13 00:21:22,464 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'agora_service': 'disable', 'brtc_service': 'enable', 'bs_state': 0, 'cap_pic_enable': 'invalid', 'ipcam_dev': '1', 'ipcam_record': 'enable', 'laser_preview_res': 7, 'liveview_preview': True, 'mode_bits': 2, 'resolution': '1080p', 'rtsp_url': 'rtsps://[IP]:322/streaming/live/1', 'timelapse': 'enable', 'tl_external_free_kb': 4153920, 'tl_external_total_kb': 30058880, 'tl_internal_free_kb': 746763, 'tl_internal_total_kb': 962560, 'tl_store_hpd_type': 2, 'tl_store_path_type': 2, 'tutk_server': 'disable'}
+2026-05-13 00:21:22,465 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Timelapse detected during print (from ipcam)
+2026-05-13 00:21:22,465 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -35dBm
+2026-05-13 00:21:22,465 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'mode': 'on', 'node': 'chamber_light'}, {'mode': 'flashing', 'node': 'work_light'}]
+2026-05-13 00:21:22,465 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] MQTT mapping field: [2, 3]
+2026-05-13 00:21:22,465 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: RUNNING -> RUNNING, file: /data/Metadata/plate_1.gcode, subtask: HESSBH_GENERATION_CHIMIK
