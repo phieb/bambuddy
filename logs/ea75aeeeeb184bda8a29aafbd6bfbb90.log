@@ -1,0 +1,200 @@
+2026-05-11 22:08:44,770 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] PRINT START detected - file: Test Cube Loop.gcode.3mf, subtask: Test Cube Loop, is_new: True, is_file_change: False
+2026-05-11 22:08:44,771 INFO [backend.app.main] [-] [CALLBACK] on_print_start called for printer 1, data keys: ['filename', 'subtask_name', 'remaining_time', 'raw_data', 'ams_mapping']
+2026-05-11 22:08:44,777 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] PRINT START printer 1: mapping=None, tray_now=254, last_loaded_tray=254
+2026-05-11 22:08:44,811 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Snapshotted 1 spool assignments for printer 1: {'255-0': 1}
+2026-05-11 22:08:44,811 INFO [backend.app.services.usage_tracker] [-] [UsageTracker] Captured start remain% for printer 1 (1 trays): {'255-0': 0}
+2026-05-11 22:08:44,820 INFO [backend.app.main] [-] [PLATE CHECK] printer_id=1, plate_detection_enabled=False
+2026-05-11 22:08:44,820 INFO [backend.app.main] [-] [CALLBACK] Print start detected - filename: Test Cube Loop.gcode.3mf, subtask: Test Cube Loop
+2026-05-11 22:08:44,838 INFO [backend.app.main] [-] Trying filenames: ['Test Cube Loop.gcode.3mf', 'Test Cube Loop.3mf', 'Test_Cube_Loop.gcode.3mf', 'Test_Cube_Loop.3mf']
+2026-05-11 22:08:45,658 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P1S, prot_c=False)
+2026-05-11 22:08:46,475 INFO [backend.app.services.bambu_ftp] [-] Successfully downloaded /Test Cube Loop.gcode.3mf to /app/data/archive/temp/Test Cube Loop.gcode.3mf (43953 bytes)
+2026-05-11 22:08:46,475 INFO [backend.app.services.bambu_ftp] [-] FTP mode cached for [IP]: prot_p
+2026-05-11 22:08:46,485 INFO [backend.app.main] [-] Downloaded: /Test Cube Loop.gcode.3mf
+2026-05-11 22:08:46,529 INFO [backend.app.main] [-] Created archive 16 for Test Cube Loop.gcode.3mf
+2026-05-11 22:08:46,531 INFO [backend.app.main] [-] [ENERGY] No smart plug for printer 1 (archive 16)
+2026-05-11 22:08:46,535 INFO [backend.app.main] [-] [SNAPSHOT] Capturing fresh frame for printer 1
+2026-05-11 22:08:46,535 INFO [backend.app.services.camera] [-] Capturing camera frame bytes from [IP] using chamber image protocol (model: P1S)
+2026-05-11 22:08:48,565 INFO [backend.app.main] [-] [SNAPSHOT] Fresh camera frame: 90827 bytes
+2026-05-11 22:08:48,565 INFO [backend.app.services.notification_service] [-] on_print_start called for printer 1 ([PRINTER])
+2026-05-11 22:08:48,567 INFO [backend.app.services.notification_service] [-] No notification providers configured for print_start event on printer 1
+2026-05-11 22:08:48,568 INFO [backend.app.main] [-] Loaded 1 printable objects for printer 1
+2026-05-11 22:08:49,241 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:08:49,420 INFO [backend.app.services.bambu_ftp] [-] FTP connected successfully to [IP] (model=P1S, prot_c=False)
+2026-05-11 22:08:54,271 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:08:54,370 INFO [backend.app.main] [-] [TIMELAPSE] Baseline at print start: 265 video files for printer 1
+2026-05-11 22:08:59,495 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:05,025 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:10,046 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:15,075 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:20,305 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:25,739 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:30,777 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:34,578 INFO [backend.app.api.routes.printers] [a0874f6c] Cover using cached 3MF from /app/data/archive/temp/Test Cube Loop.gcode.3mf (avoided duplicate FTP)
+2026-05-11 22:09:34,579 INFO [backend.app.api.routes.printers] [a0874f6c] Downloaded file size: 43953 bytes
+2026-05-11 22:09:34,580 INFO [backend.app.api.routes.printers] [a0874f6c] Cover: detected plate 1 from 3MF contents
+2026-05-11 22:09:34,939 INFO [backend.app.services.firmware_check] [4228d0e6] Got Bambu Lab build ID: qlInJoEY-IkhFrtF0HKX1
+2026-05-11 22:09:35,910 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:41,350 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:46,484 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:51,818 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:53,479 INFO [backend.app.api.routes.inventory] [6529e2f7] Pre-configured assignment: spool 1 → printer 1 AMS255-T0 (slot empty, will configure on insert)
+2026-05-11 22:09:53,480 INFO [uvicorn.access] [-] [IP]:44440 - "POST /api/v1/inventory/assignments HTTP/1.1" 200
+2026-05-11 22:09:56,957 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:09:57,407 INFO [backend.app.services.bambu_mqtt] [eccda0cb] [[SERIAL]] Requesting K-profiles for nozzle_diameter=0.4 (attempt 1/3)
+2026-05-11 22:09:57,422 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] K-profile response: nozzle=0.4, seq_id=6, 0 profiles, expected=0.4
+2026-05-11 22:09:57,422 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Got 0 K-profiles for nozzle=0.4
+2026-05-11 22:09:57,423 INFO [backend.app.services.bambu_mqtt] [eccda0cb] [[SERIAL]] Got 0 K-profiles for nozzle=0.4 on attempt 1
+2026-05-11 22:10:01,997 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:07,131 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:12,066 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:12,481 INFO [backend.app.api.routes.printers] [7ee317b7] [configure_ams_slot] printer_id=1, ams_id=255, tray_id=0
+2026-05-11 22:10:12,482 INFO [backend.app.api.routes.printers] [7ee317b7] [configure_ams_slot] tray_info_idx='GFA00', tray_type='PLA', tray_sub_brands='Bambu PLA Basic'
+2026-05-11 22:10:12,482 INFO [backend.app.api.routes.printers] [7ee317b7] [configure_ams_slot] setting_id='', kprofile_filament_id='', kprofile_setting_id=''
+2026-05-11 22:10:12,483 INFO [backend.app.services.bambu_mqtt] [7ee317b7] [[SERIAL]] Publishing ams_filament_setting: AMS 255, tray 0, tray_info_idx=GFA00, setting_id=
+2026-05-11 22:10:12,483 INFO [backend.app.services.bambu_mqtt] [7ee317b7] [[SERIAL]] Publishing extrusion_cali_sel: AMS 255, tray 0, cali_idx=-1
+2026-05-11 22:10:12,484 INFO [backend.app.api.routes.printers] [7ee317b7] [configure_ams_slot] Requesting status update from printer
+2026-05-11 22:10:12,485 INFO [backend.app.api.routes.printers] [7ee317b7] [configure_ams_slot] Status update request result: True
+2026-05-11 22:10:12,486 INFO [uvicorn.access] [-] [IP]:54818 - "POST /api/v1/printers/1/slots/255/0/configure?tray_info_idx=GFA00&tray_type=PLA&tray_sub_brands=Bambu+PLA+Basic&tray_color=000000FF&nozzle_temp_min=190&nozzle_temp_max=230&cali_idx=-1&nozzle_diameter=0.4 HTTP/1.1" 200
+2026-05-11 22:10:12,504 INFO [uvicorn.access] [-] [IP]:54818 - "PUT /api/v1/printers/1/slot-presets/255/0?preset_id=builtin_GFA00&preset_name=Bambu%20PLA%20Basic&preset_source=builtin HTTP/1.1" 200
+2026-05-11 22:10:17,199 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:22,336 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:24,779 INFO [backend.app.api.routes.inventory] [56489f25] Pre-configured assignment: spool 1 → printer 1 AMS255-T0 (slot empty, will configure on insert)
+2026-05-11 22:10:24,780 INFO [uvicorn.access] [-] [IP]:36444 - "POST /api/v1/inventory/assignments HTTP/1.1" 200
+2026-05-11 22:10:27,776 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:32,806 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:37,845 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:42,874 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:48,007 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:53,346 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:10:58,577 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:03,612 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:08,644 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:13,676 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:18,711 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:23,839 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:26,149 INFO [backend.app.main] [-] [SNAPSHOT] Capturing fresh frame for printer 1
+2026-05-11 22:11:26,149 INFO [backend.app.services.camera] [-] Capturing camera frame bytes from [IP] using chamber image protocol (model: P1S)
+2026-05-11 22:11:27,882 INFO [backend.app.main] [-] [SNAPSHOT] Fresh camera frame: 93872 bytes
+2026-05-11 22:11:29,282 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:34,321 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:39,349 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:44,387 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:49,817 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:54,852 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:11:56,323 INFO [backend.app.api.routes.support] [7f67ac65] Log level changed to DEBUG
+2026-05-11 22:11:56,324 INFO [backend.app.api.routes.bug_report] [7f67ac65] Bug report: enabled debug logging
+2026-05-11 22:11:56,324 DEBUG [backend.app.services.bambu_mqtt] [7f67ac65] [[SERIAL]] Requesting status update (pushall)
+2026-05-11 22:11:56,325 INFO [uvicorn.access] [-] [IP]:48280 - "POST /api/v1/bug-report/start-logging HTTP/1.1" 200
+2026-05-11 22:11:56,359 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: RUNNING, gcode_file: Test Cube Loop.gcode.3mf, subtask_name: Test Cube Loop
+2026-05-11 22:11:56,360 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '0', 'tray_exist_bits': '0', 'tray_is_bbl_bits': '0', 'tray_tar': '255', 'tray_now': '254', 'tray_pre': '254', 'tray_read_done_bits': '0', 'tray_reading_bits': '0', 'version': 1, 'insert_flag': True, 'power_on_flag': False}
+2026-05-11 22:11:56,361 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 254
+2026-05-11 22:11:56,362 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 0 new units, 0 total
+2026-05-11 22:11:56,363 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 1280 (main=5, sub=0)
+2026-05-11 22:11:56,364 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:11:56,364 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 0 -> 2
+2026-05-11 22:11:56,365 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-11 22:11:56,366 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-11 22:11:56,367 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-11 22:11:56,368 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-11 22:11:56,369 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-05-11 22:11:56,369 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'enable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-11 22:11:56,370 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Timelapse detected during print (from ipcam)
+2026-05-11 22:11:56,371 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -47dBm
+2026-05-11 22:11:56,371 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-11 22:11:56,372 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: RUNNING -> RUNNING, file: Test Cube Loop.gcode.3mf, subtask: Test Cube Loop
+2026-05-11 22:11:58,375 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:11:58,376 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -46dBm
+2026-05-11 22:12:00,090 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:00,091 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:01,895 INFO [backend.app.services.bambu_mqtt] [f53245c1] [[SERIAL]] Requesting K-profiles for nozzle_diameter=0.4 (attempt 1/3)
+2026-05-11 22:12:01,895 DEBUG [backend.app.services.bambu_mqtt] [f53245c1] [[SERIAL]] K-profile request JSON: {"print": {"command": "extrusion_cali_get", "filament_id": "", "nozzle_diameter": "0.4", "sequence_id": "7"}}
+2026-05-11 22:12:01,905 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: extrusion_cali_get
+2026-05-11 22:12:01,905 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] K-profile response: nozzle=0.4, seq_id=7, 0 profiles, expected=0.4
+2026-05-11 22:12:01,905 INFO [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Got 0 K-profiles for nozzle=0.4
+2026-05-11 22:12:01,906 INFO [backend.app.services.bambu_mqtt] [f53245c1] [[SERIAL]] Got 0 K-profiles for nozzle=0.4 on attempt 1
+2026-05-11 22:12:02,407 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:04,433 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:04,434 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -47dBm
+2026-05-11 22:12:05,018 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:05,019 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:06,449 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:06,450 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] stg_cur changed: 54 -> 14 (Cleaning nozzle tip)
+2026-05-11 22:12:06,451 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -45dBm
+2026-05-11 22:12:10,156 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:10,157 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:10,475 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:10,476 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 2 -> 1
+2026-05-11 22:12:10,476 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -42dBm
+2026-05-11 22:12:12,504 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:12,505 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -43dBm
+2026-05-11 22:12:14,529 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:15,189 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:15,189 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:16,099 INFO [backend.app.api.routes.printers] [e4e5a281] [configure_ams_slot] printer_id=1, ams_id=255, tray_id=0
+2026-05-11 22:12:16,099 INFO [backend.app.api.routes.printers] [e4e5a281] [configure_ams_slot] tray_info_idx='GFL99', tray_type='PLA', tray_sub_brands='Generic PLA'
+2026-05-11 22:12:16,099 INFO [backend.app.api.routes.printers] [e4e5a281] [configure_ams_slot] setting_id='', kprofile_filament_id='', kprofile_setting_id=''
+2026-05-11 22:12:16,099 INFO [backend.app.services.bambu_mqtt] [e4e5a281] [[SERIAL]] Publishing ams_filament_setting: AMS 255, tray 0, tray_info_idx=GFL99, setting_id=
+2026-05-11 22:12:16,099 DEBUG [backend.app.services.bambu_mqtt] [e4e5a281] [[SERIAL]] ams_filament_setting command: {"print": {"command": "ams_filament_setting", "ams_id": 255, "tray_id": 0, "slot_id": 0, "tray_info_idx": "GFL99", "tray_type": "PLA", "tray_sub_brands": "Generic PLA", "tray_color": "000000FF", "nozzle_temp_min": 190, "nozzle_temp_max": 230, "sequence_id": "0"}}
+2026-05-11 22:12:16,100 INFO [backend.app.services.bambu_mqtt] [e4e5a281] [[SERIAL]] Publishing extrusion_cali_sel: AMS 255, tray 0, cali_idx=-1
+2026-05-11 22:12:16,100 DEBUG [backend.app.services.bambu_mqtt] [e4e5a281] [[SERIAL]] extrusion_cali_sel command: {"print": {"command": "extrusion_cali_sel", "cali_idx": -1, "filament_id": "GFL99", "nozzle_diameter": "0.4", "ams_id": 254, "tray_id": 254, "slot_id": 0, "sequence_id": "0"}}
+2026-05-11 22:12:16,100 INFO [backend.app.api.routes.printers] [e4e5a281] [configure_ams_slot] Requesting status update from printer
+2026-05-11 22:12:16,100 DEBUG [backend.app.services.bambu_mqtt] [e4e5a281] [[SERIAL]] Requesting status update (pushall)
+2026-05-11 22:12:16,100 INFO [backend.app.api.routes.printers] [e4e5a281] [configure_ams_slot] Status update request result: True
+2026-05-11 22:12:16,101 INFO [uvicorn.access] [-] [IP]:52548 - "POST /api/v1/printers/1/slots/255/0/configure?tray_info_idx=GFL99&tray_type=PLA&tray_sub_brands=Generic+PLA&tray_color=000000FF&nozzle_temp_min=190&nozzle_temp_max=230&cali_idx=-1&nozzle_diameter=0.4 HTTP/1.1" 200
+2026-05-11 22:12:16,111 INFO [uvicorn.access] [-] [IP]:52548 - "PUT /api/v1/printers/1/slot-presets/255/0?preset_id=builtin_GFL99&preset_name=Generic%20PLA&preset_source=builtin HTTP/1.1" 200
+2026-05-11 22:12:16,123 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: ams_filament_setting
+2026-05-11 22:12:16,124 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_filament_setting response: {'command': 'ams_filament_setting', 'ams_id': 255, 'tray_id': 0, 'slot_id': 0, 'tray_info_idx': 'GFL99', 'tray_type': 'PLA', 'tray_sub_brands': 'Generic PLA', 'tray_color': '000000FF', 'nozzle_temp_min': 190, 'nozzle_temp_max': 230, 'sequence_id': '0', 'reason': 'error string', 'result': 'fail'}
+2026-05-11 22:12:16,124 DEBUG [backend.app.api.routes.printers] [540b488e] API returning ams_mapping: [], ams_extruder_map: {}
+2026-05-11 22:12:16,124 DEBUG [backend.app.api.routes.printers] [540b488e] Using tray_now directly as global ID: 254
+2026-05-11 22:12:16,198 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: extrusion_cali_sel
+2026-05-11 22:12:16,198 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] extrusion_cali_sel response: {'command': 'extrusion_cali_sel', 'cali_idx': -1, 'filament_id': 'GFL99', 'nozzle_diameter': '0.4', 'ams_id': 254, 'tray_id': 254, 'slot_id': 0, 'sequence_id': '0', 'reason': 'success', 'result': 'success'}
+2026-05-11 22:12:16,224 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: RUNNING, gcode_file: Test Cube Loop.gcode.3mf, subtask_name: Test Cube Loop
+2026-05-11 22:12:16,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '0', 'tray_exist_bits': '0', 'tray_is_bbl_bits': '0', 'tray_tar': '255', 'tray_now': '254', 'tray_pre': '254', 'tray_read_done_bits': '0', 'tray_reading_bits': '0', 'version': 1, 'insert_flag': True, 'power_on_flag': False}
+2026-05-11 22:12:16,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 254
+2026-05-11 22:12:16,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 0 new units, 0 total
+2026-05-11 22:12:16,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 1280 (main=5, sub=0)
+2026-05-11 22:12:16,225 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:16,226 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-11 22:12:16,226 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-11 22:12:16,226 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-11 22:12:16,226 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-11 22:12:16,226 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-05-11 22:12:16,226 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'enable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-11 22:12:16,227 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Timelapse detected during print (from ipcam)
+2026-05-11 22:12:16,227 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -43dBm
+2026-05-11 22:12:16,227 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-11 22:12:16,227 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: RUNNING -> RUNNING, file: Test Cube Loop.gcode.3mf, subtask: Test Cube Loop
+2026-05-11 22:12:18,248 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:18,911 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP NOTIFY for Bambuddy (Location=[IP], USN=[SERIAL], bind=[IP])
+2026-05-11 22:12:20,269 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:20,423 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:20,425 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:24,292 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:24,292 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -42dBm
+2026-05-11 22:12:24,306 DEBUG [backend.app.main] [-] [[PRINTER]] Runtime tracking: added 30s, total=9630s (2.67h)
+2026-05-11 22:12:24,316 DEBUG [backend.app.main] [-] Updated runtime for 1 printer(s)
+2026-05-11 22:12:25,458 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:25,459 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:26,313 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:28,346 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:28,346 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -43dBm
+2026-05-11 22:12:30,883 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:30,884 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:32,377 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:32,378 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] mc_print_sub_stage changed: 1 -> 0
+2026-05-11 22:12:32,379 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -41dBm
+2026-05-11 22:12:34,394 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:34,395 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -42dBm
+2026-05-11 22:12:34,405 INFO [backend.app.main] [-] [SNAPSHOT] Capturing fresh frame for printer 1
+2026-05-11 22:12:34,405 INFO [backend.app.services.camera] [-] Capturing camera frame bytes from [IP] using chamber image protocol (model: P1S)
+2026-05-11 22:12:35,910 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:35,911 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:36,296 DEBUG [backend.app.services.camera] [-] Chamber image: received 83832 bytes
+2026-05-11 22:12:36,303 INFO [backend.app.main] [-] [SNAPSHOT] Fresh camera frame: 83832 bytes
+2026-05-11 22:12:36,437 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:38,024 INFO [backend.app.api.routes.inventory] [8712b080] Pre-configured assignment: spool 1 → printer 1 AMS255-T0 (slot empty, will configure on insert)
+2026-05-11 22:12:38,025 INFO [uvicorn.access] [-] [IP]:37536 - "POST /api/v1/inventory/assignments HTTP/1.1" 200
+2026-05-11 22:12:40,454 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-11 22:12:41,042 DEBUG [backend.app.services.virtual_printer.ssdp_server] [-] Received M-SEARCH from [IP]
+2026-05-11 22:12:41,043 INFO [backend.app.services.virtual_printer.ssdp_server] [-] Sent SSDP response to [IP] for 'Bambuddy' (Location=[IP], USN=[SERIAL])
+2026-05-11 22:12:42,477 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
