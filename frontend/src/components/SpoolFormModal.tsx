@@ -80,7 +80,16 @@ export function SpoolFormModal({
   const [builtinFilaments, setBuiltinFilaments] = useState<BuiltinFilament[]>([]);
 
   // Color catalog
-  const [colorCatalog, setColorCatalog] = useState<{ manufacturer: string; color_name: string; hex_color: string; material: string | null }[]>([]);
+  const [colorCatalog, setColorCatalog] = useState<{
+    manufacturer: string;
+    color_name: string;
+    hex_color: string;
+    material: string | null;
+    // #1340: gradient + effect carried from the catalog entry through to the
+    // color picker so they're applied alongside hex + name on selection.
+    extra_colors?: string | null;
+    effect_type?: string | null;
+  }[]>([]);
 
   // Color state
   const [recentColors, setRecentColors] = useState<ColorPreset[]>([]);
