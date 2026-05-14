@@ -21,14 +21,13 @@ If you sponsor and your name isn't here within 48h, please write an email to mar
 
 ## Patrons ($35/mo+)
 
-*None yet.*
+- [@VREmma](https://github.com/VREmma)
 
 ## Supporters ($15/mo+)
 
 - [@rewart01](https://github.com/rewart01)
 - [@rstocks](https://github.com/rstocks)
 - [@sixfootseven](https://github.com/sixfootseven)
-- [@VREmma](https://github.com/VREmma)
 
 ## Backers ($5/mo+)
 
