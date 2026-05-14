@@ -1,0 +1,200 @@
+2026-05-13 23:15:04,734 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-13 23:20:04,742 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-13 23:25:04,749 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-13 23:30:04,756 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-13 23:35:04,764 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-13 23:40:04,772 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-13 23:45:04,780 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-13 23:50:04,788 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-13 23:55:04,796 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:00:04,804 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:05:04,812 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:10:04,820 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:15:04,828 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:20:04,836 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:25:04,844 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:30:04,853 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:35:04,862 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:40:04,869 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:45:04,877 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:50:04,884 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 00:55:04,892 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:00:04,902 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:05:04,910 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:10:04,918 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:15:04,925 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:20:04,933 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:25:04,941 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:30:04,950 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:35:04,958 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:40:04,966 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:45:04,974 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:50:04,982 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 01:55:04,989 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:00:04,998 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:05:05,005 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:10:05,014 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:15:05,022 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:20:05,030 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:25:05,038 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:29:10,573 INFO [uvicorn.access] [-] [IP]:59915 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-05-14 02:29:11,059 INFO [backend.app.api.routes.cloud] [7c96156e] get_filament_info called with 1 IDs: ['GFB00']
+2026-05-14 02:29:11,065 INFO [uvicorn.access] [-] [IP]:59919 - "POST /api/v1/cloud/filament-info HTTP/1.1" 200
+2026-05-14 02:29:19,369 INFO [backend.app.services.firmware_check] [56b2dce3] Got Bambu Lab build ID: eZI9eCMkwRCLYGcXplXED
+2026-05-14 02:30:05,046 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:35:05,054 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:40:05,062 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:45:05,070 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:50:05,079 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 02:55:05,087 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:00:05,095 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:05:05,103 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:10:05,112 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:15:05,119 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:20:05,127 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:25:05,134 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:30:05,142 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:35:05,151 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:40:05,159 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:45:05,166 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:50:05,175 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 03:55:05,182 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:00:05,189 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:05:05,197 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:10:05,206 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:15:05,214 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:20:05,222 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:25:05,230 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:30:05,238 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:35:05,246 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:40:05,253 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:45:05,261 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:50:05,268 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 04:55:05,276 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:00:05,284 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:05:05,291 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:10:05,299 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:15:05,307 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:20:05,315 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:25:05,323 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:30:05,330 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:35:05,338 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:40:05,346 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:45:05,353 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:50:05,361 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 05:55:05,368 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:00:05,375 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:05:05,383 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:10:05,391 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:15:05,399 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:20:05,406 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:25:05,414 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:30:05,421 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:35:05,438 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:40:05,446 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:45:05,455 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:50:05,463 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 06:55:05,470 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:00:05,478 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:05:05,488 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:10:05,495 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:15:05,504 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:20:05,511 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:25:05,519 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:29:10,836 INFO [uvicorn.access] [-] [IP]:49530 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-05-14 07:29:11,367 INFO [backend.app.api.routes.cloud] [48660ca9] get_filament_info called with 1 IDs: ['GFB00']
+2026-05-14 07:29:11,374 INFO [uvicorn.access] [-] [IP]:49532 - "POST /api/v1/cloud/filament-info HTTP/1.1" 200
+2026-05-14 07:30:05,526 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:35:05,534 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:40:05,541 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:45:05,549 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:50:05,557 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 07:55:05,565 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:00:05,573 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:05:05,581 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:10:05,588 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:15:05,595 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:20:05,603 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:25:05,611 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:30:05,620 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:35:05,633 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:40:05,641 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:45:05,649 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:50:05,658 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 08:55:05,666 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 09:00:05,673 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 09:05:05,681 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 09:05:53,634 INFO [uvicorn.access] [-] [IP]:51480 - "POST /api/v1/printers/camera/stream-token HTTP/1.1" 200
+2026-05-14 09:05:54,142 INFO [backend.app.api.routes.cloud] [27dd7d93] get_filament_info called with 1 IDs: ['GFB00']
+2026-05-14 09:05:54,145 INFO [uvicorn.access] [-] [IP]:51496 - "POST /api/v1/cloud/filament-info HTTP/1.1" 200
+2026-05-14 09:05:58,286 INFO [backend.app.api.routes.websocket] [-] WebSocket client connecting...
+2026-05-14 09:05:58,286 INFO [backend.app.api.routes.websocket] [-] WebSocket client connected
+2026-05-14 09:05:58,288 INFO [backend.app.api.routes.websocket] [-] Sent initial status for 1 printers
+2026-05-14 09:10:05,688 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 09:13:40,760 INFO [backend.app.api.routes.cloud] [6b834a0d] get_filament_info called with 1 IDs: ['GFB00']
+2026-05-14 09:13:40,778 INFO [uvicorn.access] [-] [IP]:38492 - "POST /api/v1/cloud/filament-info HTTP/1.1" 200
+2026-05-14 09:14:23,916 INFO [uvicorn.access] [-] [IP]:38512 - "POST /api/v1/library/files/5/slice HTTP/1.1" 202
+2026-05-14 09:14:50,513 INFO [backend.app.services.stl_thumbnail] [0eb00fc4] Generated STL thumbnail: /app/data/archive/library/thumbnails/c9c1d8ae31494b93820bee03cf02eb5a.png
+2026-05-14 09:14:50,525 INFO [uvicorn.access] [-] [IP]:60596 - "POST /api/v1/library/generate-stl-thumbnails HTTP/1.1" 200
+2026-05-14 09:14:56,624 INFO [uvicorn.access] [-] [IP]:59092 - "POST /api/v1/library/files/5/slice HTTP/1.1" 202
+2026-05-14 09:15:05,696 INFO [backend.app.main] [-] Recorded 1 AMS sensor history entries
+2026-05-14 09:16:06,126 INFO [uvicorn.access] [-] [IP]:42822 - "POST /api/v1/library/files/5/slice HTTP/1.1" 202
+2026-05-14 09:16:21,477 INFO [uvicorn.access] [-] [IP]:42822 - "POST /api/v1/library/files/5/slice HTTP/1.1" 202
+2026-05-14 09:16:38,373 INFO [uvicorn.access] [-] [IP]:39576 - "POST /api/v1/library/files/5/slice HTTP/1.1" 202
+2026-05-14 09:16:49,089 INFO [uvicorn.access] [-] [IP]:37244 - "POST /api/v1/library/files/5/slice HTTP/1.1" 202
+2026-05-14 09:17:51,597 INFO [backend.app.api.routes.support] [063759af] Log level changed to DEBUG
+2026-05-14 09:17:51,597 INFO [backend.app.api.routes.bug_report] [063759af] Bug report: enabled debug logging
+2026-05-14 09:17:51,597 DEBUG [backend.app.services.bambu_mqtt] [063759af] [[SERIAL]] Requesting status update (pushall)
+2026-05-14 09:17:51,598 INFO [uvicorn.access] [-] [IP]:49960 - "POST /api/v1/bug-report/start-logging HTTP/1.1" 200
+2026-05-14 09:17:51,669 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: , subtask_name: cubecircle
+2026-05-14 09:17:51,669 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'tray_exist_bits': 'f', 'tray_is_bbl_bits': 'f', 'tray_tar': '255', 'tray_now': '255', 'tray_pre': '255', 'tray_read_done_bits': 'f', 'tray_reading_bits': '0', 'version': 43, 'insert_flag': True, 'power_on_flag': True}
+2026-05-14 09:17:51,670 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 255
+2026-05-14 09:17:51,672 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-14 09:17:51,672 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 0 (main=0, sub=0)
+2026-05-14 09:17:51,672 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-14 09:17:51,673 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-14 09:17:51,673 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-14 09:17:51,673 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-14 09:17:51,673 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-14 09:17:51,673 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-05-14 09:17:51,674 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'disable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-14 09:17:51,674 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -62dBm
+2026-05-14 09:17:51,675 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-14 09:17:51,675 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: , subtask: cubecircle
+2026-05-14 09:17:54,759 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: , subtask_name: cubecircle
+2026-05-14 09:17:54,759 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'tray_exist_bits': 'f', 'tray_is_bbl_bits': 'f', 'tray_tar': '255', 'tray_now': '255', 'tray_pre': '255', 'tray_read_done_bits': 'f', 'tray_reading_bits': '0', 'version': 43, 'insert_flag': True, 'power_on_flag': True}
+2026-05-14 09:17:54,759 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 255
+2026-05-14 09:17:54,759 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-14 09:17:54,760 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 0 (main=0, sub=0)
+2026-05-14 09:17:54,760 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-14 09:17:54,760 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-14 09:17:54,760 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-14 09:17:54,760 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-14 09:17:54,760 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-14 09:17:54,761 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-05-14 09:17:54,761 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'disable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-14 09:17:54,761 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -63dBm
+2026-05-14 09:17:54,761 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-14 09:17:54,761 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: , subtask: cubecircle
+2026-05-14 09:17:56,433 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received gcode_state: FINISH, gcode_file: , subtask_name: cubecircle
+2026-05-14 09:17:56,433 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] AMS dict fields: {'ams_exist_bits': '1', 'tray_exist_bits': 'f', 'tray_is_bbl_bits': 'f', 'tray_tar': '255', 'tray_now': '255', 'tray_pre': '255', 'tray_read_done_bits': 'f', 'tray_reading_bits': '0', 'version': 43, 'insert_flag': True, 'power_on_flag': True}
+2026-05-14 09:17:56,433 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] tray_now updated: 255
+2026-05-14 09:17:56,434 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Merged AMS data: 1 new units, 1 total
+2026-05-14 09:17:56,434 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ams_status: 0 (main=0, sub=0)
+2026-05-14 09:17:56,434 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-14 09:17:56,434 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper raw value: 5.0
+2026-05-14 09:17:56,434 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] chamber_temper direct value: 5.0°C (heater OFF)
+2026-05-14 09:17:56,434 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber heating calculated: target=0.0, current=5.0, heating=False, respect_local=False
+2026-05-14 09:17:56,434 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Chamber temp updated to: 5.0, target: 0.0, heating: False
+2026-05-14 09:17:56,435 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] HMS data received: []
+2026-05-14 09:17:56,435 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] ipcam field: {'ipcam_dev': '1', 'ipcam_record': 'enable', 'timelapse': 'disable', 'resolution': '', 'tutk_server': 'disable', 'mode_bits': 3}
+2026-05-14 09:17:56,435 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -63dBm
+2026-05-14 09:17:56,435 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] lights_report: [{'node': 'chamber_light', 'mode': 'on'}]
+2026-05-14 09:17:56,436 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] gcode_state: FINISH -> FINISH, file: , subtask: cubecircle
+2026-05-14 09:17:58,460 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-14 09:17:58,461 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -62dBm
+2026-05-14 09:17:59,064 INFO [uvicorn.access] [-] [IP]:57464 - "POST /api/v1/library/files/5/slice HTTP/1.1" 202
+2026-05-14 09:18:02,535 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-14 09:18:02,536 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -63dBm
+2026-05-14 09:18:04,568 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] Received command response: push_status
+2026-05-14 09:18:04,568 DEBUG [backend.app.services.bambu_mqtt] [-] [[SERIAL]] wifi_signal received: -62dBm
