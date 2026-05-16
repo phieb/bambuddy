@@ -487,6 +487,12 @@ export interface Archive {
   // User tracking (Issue #206)
   created_by_id: number | null;
   created_by_username: string | null;
+  // Per-archive run aggregates from PrintLogEntry (#1378)
+  run_count: number;
+  last_run_at: string | null;
+  total_filament_actual_grams: number | null;
+  successful_run_count: number;
+  failed_run_count: number;
 }
 
 export interface ArchiveSlim {
@@ -507,6 +513,7 @@ export interface ArchiveSlim {
 
 export interface PrintLogEntry {
   id: number;
+  archive_id: number | null;
   print_name: string | null;
   printer_name: string | null;
   printer_id: number | null;
@@ -517,7 +524,12 @@ export interface PrintLogEntry {
   filament_type: string | null;
   filament_color: string | null;
   filament_used_grams: number | null;
+  cost: number | null;
+  energy_kwh: number | null;
+  energy_cost: number | null;
+  failure_reason: string | null;
   thumbnail_path: string | null;
+  created_by_id: number | null;
   created_by_username: string | null;
   created_at: string;
 }
@@ -3445,6 +3457,7 @@ export const api = {
     return request<ArchiveSlim[]>(`/archives/slim${qs ? `?${qs}` : ''}`);
   },
   getArchive: (id: number) => request<Archive>(`/archives/${id}`),
+  getArchiveRuns: (id: number) => request<PrintLogResponse>(`/archives/${id}/runs`),
   searchArchives: (query: string, options?: {
     printerId?: number;
     projectId?: number;
