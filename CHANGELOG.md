@@ -2,6 +2,12 @@
 
 All notable changes to Bambuddy will be documented in this file.
 
+## [0.2.4.3] - Unreleased
+
+### Security
+- **idna: bump to `>=3.15` to clear CVE-2026-45409 (ReDoS in `idna.encode()` with crafted Unicode payloads, e.g. `"٠" * N` or `"・" * N + "漢"`)** — Transitive dep pulled in by anyio / httpx / requests / yarl; not directly pinned, which is why it lingered at 3.13. Added an explicit `idna>=3.15` floor in `requirements.txt` between Authentication and HTTP-client blocks with a comment explaining why it's pinned (so a future downstream loosening doesn't silently downgrade us). Verified via `pip-audit` clean post-upgrade.
+- **PyJWT CVE-2025-45768 (PYSEC-2025-183 / GHSA-65pc-fj4g-8rjx): permanently ignored in pip-audit** — Advisory is disputed by the PyJWT maintainers, with the advisory description literally noting *"this is disputed by the Supplier because the key length is chosen by the application that uses the library."* `fix_versions=[]` on the advisory confirms no PyJWT patch exists or will exist. Bambuddy is not affected: `backend/app/core/auth.py:184` auto-generates secrets via `secrets.token_urlsafe(64)` (~86 chars of entropy, far above any sane minimum) and the file-loaded path at `:177` rejects secrets shorter than 32 chars. Added a permanent `--ignore-vuln CVE-2025-45768` to `.github/workflows/security.yml` with an inline comment citing the file:line evidence so a future maintainer reviewing the ignore list sees why it's load-bearing. Also dropped the stale `--ignore-vuln CVE-2026-4539` for Pygments — Pygments has since shipped a patched version and the ignore is no longer load-bearing (verified: `pip-audit --ignore-vuln CVE-2025-45768` alone reports clean).
+
 ## [0.2.4.2] - 2026-05-19
 
 ### Added
