@@ -3730,13 +3730,13 @@ class TestStartPrintAmsMapping:
             {"ams_id": 255, "slot_id": 0},
         ]
 
-    def test_x2d_uses_integer_format_for_calibration_fields(self, mqtt_client):
-        """X2D must use H2D-style integer (0/1) format for calibration fields (#988).
+    def test_x2d_uses_boolean_format_for_calibration_fields(self, mqtt_client):
+        """X2D sends calibration fields as JSON booleans, like every model (#1478).
 
-        The reporter's support bundle showed X2D running firmware in the same
-        family as H2D. Booleans in these fields are interpreted as nozzle
-        indexes by H2D firmware; X2D is treated identically until proven
-        otherwise.
+        An earlier revision integer-encoded these for the H2 family on the
+        belief that H2 firmware required 0/1. A BambuStudio request-topic
+        capture from a real H2D disproved it — BambuStudio sends plain
+        booleans — so X2D follows the same boolean format.
         """
         mqtt_client.model = "X2D"
         mqtt_client.start_print(
@@ -3749,24 +3749,24 @@ class TestStartPrintAmsMapping:
         )
 
         cmd = self._get_published_command(mqtt_client)
-        assert cmd["timelapse"] == 1
-        assert cmd["bed_leveling"] == 0
-        assert cmd["flow_cali"] == 1
-        assert cmd["vibration_cali"] == 0
-        assert cmd["layer_inspect"] == 1
+        assert cmd["timelapse"] is True
+        assert cmd["bed_leveling"] is False
+        assert cmd["flow_cali"] is True
+        assert cmd["vibration_cali"] is False
+        assert cmd["layer_inspect"] is True
+        # flow_cali on → extrude_cali_flag must request the calibration pass.
+        assert cmd["extrude_cali_flag"] == 1
 
-    def test_p2s_still_uses_boolean_format(self, mqtt_client):
-        """Regression guard: P2S is NOT in the H-family firmware gate — must still use booleans.
-
-        Adding X2D to the H-family set must not accidentally affect P2S, which
-        is single-nozzle and uses boolean format like X1C/A1/P1.
-        """
+    def test_p2s_uses_boolean_format(self, mqtt_client):
+        """P2S sends calibration fields as JSON booleans (single-nozzle, like X1C/A1/P1)."""
         mqtt_client.model = "P2S"
         mqtt_client.start_print("test.3mf", timelapse=True, flow_cali=False)
 
         cmd = self._get_published_command(mqtt_client)
         assert cmd["timelapse"] is True
         assert cmd["flow_cali"] is False
+        # flow_cali off → extrude_cali_flag=2 (skip, reuse stored PA value).
+        assert cmd["extrude_cali_flag"] == 2
 
     def test_h2s_single_external_spool_uses_main_id(self, mqtt_client):
         """H2S is single-nozzle (#1386): external spool (254) → ams_id=255.
@@ -3797,11 +3797,14 @@ class TestStartPrintAmsMapping:
         cmd = self._get_published_command(mqtt_client)
         assert cmd["use_ams"] is False
 
-    def test_h2s_keeps_integer_format_for_calibration_fields(self, mqtt_client):
-        """H2S shares the H-family firmware (int 0/1 for calibration fields)
-        even though it's single-nozzle. Verified empirically against H2S
-        bundles: the print command structure was always accepted, only the
-        AMS routing failed (#1386).
+    def test_h2s_uses_boolean_format_for_calibration_fields(self, mqtt_client):
+        """H2S sends calibration fields as JSON booleans (#1478).
+
+        The H2S was previously integer-encoded as part of the H2 family. That
+        made it accept the print command but silently skip flow-dynamics
+        calibration — the reporter saw poor corner quality from a stale K
+        value. BambuStudio sends booleans for these fields and pairs flow_cali
+        with extrude_cali_flag=1 to actually run the calibration pass.
         """
         mqtt_client.model = "H2S"
         mqtt_client.start_print(
@@ -3814,11 +3817,14 @@ class TestStartPrintAmsMapping:
         )
 
         cmd = self._get_published_command(mqtt_client)
-        assert cmd["timelapse"] == 1
-        assert cmd["bed_leveling"] == 0
-        assert cmd["flow_cali"] == 1
-        assert cmd["vibration_cali"] == 0
-        assert cmd["layer_inspect"] == 1
+        assert cmd["timelapse"] is True
+        assert cmd["bed_leveling"] is False
+        assert cmd["flow_cali"] is True
+        assert cmd["vibration_cali"] is False
+        assert cmd["layer_inspect"] is True
+        # flow_cali on → extrude_cali_flag=1 so the printer runs the
+        # flow-dynamics calibration instead of reusing the stored PA value.
+        assert cmd["extrude_cali_flag"] == 1
 
 
 class TestStartPrintUniqueIdentityFields:

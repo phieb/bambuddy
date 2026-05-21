@@ -3262,21 +3262,17 @@ class BambuMQTTClient:
             use_ams: Use AMS for automatic filament changes
         """
         if self._client and self.state.connected:
-            # Bambu print command format - matches Bambu Studio's format
-            # H2-family firmware (H2D, H2D Pro, H2C, H2S, X2D) requires integer
-            # values (0/1) for calibration/leveling fields. X1C/P1S/A1/P2S need
-            # actual booleans. use_ams stays boolean across the board — H2D Pro
-            # firmware interprets integer use_ams as nozzle index (1 = deputy),
-            # causing wrong extruder routing (#1386 root cause was here too: the
-            # old flag conflated firmware-format with dual-nozzle routing).
-            is_h_family = self.model and self.model.upper().strip() in (
-                "H2D",
-                "H2D PRO",
-                "H2DPRO",
-                "H2C",
-                "H2S",
-                "X2D",
-            )
+            # Bambu print command format — matches Bambu Studio's format.
+            # The calibration/leveling fields (timelapse, bed_leveling,
+            # flow_cali, vibration_cali, layer_inspect) are JSON booleans for
+            # every model. An earlier revision integer-encoded them for the H2
+            # family (H2D/H2S/H2C/X2D) on the belief that H2 firmware required
+            # 0/1 — but a BambuStudio request-topic capture from a real H2D
+            # sends plain booleans, and the integer encoding made the H2S
+            # silently skip flow-dynamics calibration (#1478). use_ams is the
+            # one field that genuinely must stay boolean: H2D Pro firmware
+            # reads an integer use_ams as a nozzle index (1 = deputy), which is
+            # what actually caused the wrong-extruder routing behind #1386.
             # Dual-nozzle routing for external spool (254 = deputy/left,
             # 255 = main/right) and the use_ams=False fallback. H2S is in the
             # H2 firmware family but is single-nozzle, despite sharing serial
@@ -3372,15 +3368,20 @@ class BambuMQTTClient:
                     "file": filename,
                     "md5": "",
                     "bed_type": "auto",
-                    "timelapse": (1 if timelapse else 0) if is_h_family else timelapse,
-                    "bed_leveling": (1 if bed_levelling else 0) if is_h_family else bed_levelling,
+                    "timelapse": timelapse,
+                    "bed_leveling": bed_levelling,
                     "auto_bed_leveling": 1 if bed_levelling else 0,
-                    "flow_cali": (1 if flow_cali else 0) if is_h_family else flow_cali,
-                    "vibration_cali": (1 if vibration_cali else 0) if is_h_family else vibration_cali,
-                    "layer_inspect": (1 if layer_inspect else 0) if is_h_family else layer_inspect,
+                    "flow_cali": flow_cali,
+                    "vibration_cali": vibration_cali,
+                    "layer_inspect": layer_inspect,
                     "use_ams": use_ams,
                     "cfg": "0",
-                    "extrude_cali_flag": 0,
+                    # extrude_cali_flag gates flow-dynamics calibration:
+                    # 1 = run it, 2 = skip and reuse the stored PA value.
+                    # BambuStudio always pairs this with flow_cali and never
+                    # sends 0; a hardcoded 0 made the printer skip calibration
+                    # regardless of the flow_cali toggle (#1478).
+                    "extrude_cali_flag": 1 if flow_cali else 2,
                     "extrude_cali_manual_mode": 0,
                     "nozzle_offset_cali": 2,
                     "subtask_name": filename.replace(".3mf", "").replace(".gcode", ""),
@@ -3390,12 +3391,6 @@ class BambuMQTTClient:
                     "task_id": submission_id,
                 }
             }
-
-            if is_h_family:
-                logger.debug(
-                    "[%s] H-family firmware detected: using integer format for calibration fields (use_ams stays boolean)",
-                    self.serial_number,
-                )
 
             # P2S-specific parameter adjustments
             # P2S printer doesn't support vibration calibration like X1/P1 series
