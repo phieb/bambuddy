@@ -1217,6 +1217,7 @@ export default {
     timeAccuracy: '时间准确度',
     successful: '成功：',
     failed: '失败：',
+    cancelled: '已取消：',
     perfectEstimate: '100% = 完美估计',
     noTimeAccuracyData: '暂无时间准确度数据',
     noFilamentData: '暂无耗材数据',

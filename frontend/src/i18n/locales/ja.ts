@@ -1216,6 +1216,7 @@ export default {
     timeAccuracy: '時間精度',
     successful: '成功',
     failed: '失敗',
+    cancelled: 'キャンセル',
     perfectEstimate: '100% = 完全な推定',
     noTimeAccuracyData: '時間精度データがありません',
     noFilamentData: 'フィラメントデータがありません',

@@ -1217,6 +1217,7 @@ export default {
     timeAccuracy: 'Accuratezza tempo',
     successful: 'Riuscite:',
     failed: 'Fallite:',
+    cancelled: 'Annullate:',
     perfectEstimate: '100% = stima perfetta',
     noTimeAccuracyData: 'Nessun dato accuratezza tempo',
     noFilamentData: 'Nessun dato filamento',
