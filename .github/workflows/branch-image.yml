@@ -1,0 +1,57 @@
+name: Branch Image
+
+# Throwaway helper (fork-only, NOT for upstream): manually build the production
+# image from any branch and publish it to GHCR so it can be test-deployed on a
+# self-hosted instance. It lives on the fork's `main` so `workflow_dispatch` can
+# target ANY branch (e.g. feature/vp-gcode-injection) WITHOUT this file having to
+# sit on that branch and pollute its PR diff against upstream `dev`.
+# Do not include this file in an upstream PR.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch or ref to build the image from
+        required: true
+        default: feature/vp-gcode-injection
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: branch-image-${{ inputs.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-push:
+    name: Build & push branch image to GHCR
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out the requested branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          # Fixed tag that the muscle compose + Watchtower track, regardless of
+          # which branch was built.
+          tags: ghcr.io/${{ github.repository_owner }}/bambuddy:vp-gcode-injection
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
