@@ -528,3 +528,102 @@ class TestArithmeticPlaceholders:
             source.unlink(missing_ok=True)
             if result:
                 result.unlink(missing_ok=True)
+
+
+class TestArithmeticAstBoundaries:
+    """Adversarial / grammar-boundary tests for the restricted AST walker.
+
+    The point of using an AST allowlist instead of eval() is that everything
+    outside `{+ - * /}`, unary `+/-`, numeric literals, header names and the
+    min/max/clamp calls must be *rejected* and left verbatim — never executed,
+    never silently dropped. These lock that boundary down.
+    """
+
+    HEADER = {"max_z_height": "16.00", "slicer": "BambuStudio"}
+
+    def _verbatim(self, expr: str):
+        snippet = "Z{" + expr + "}"
+        assert _substitute_placeholders(snippet, self.HEADER) == snippet
+
+    # --- disallowed operators (each must NOT evaluate) ---
+    def test_modulo_rejected(self):
+        self._verbatim("max_z_height % 3")
+
+    def test_floor_division_rejected(self):
+        self._verbatim("max_z_height // 3")
+
+    def test_bitwise_and_rejected(self):
+        self._verbatim("max_z_height & 1")
+
+    def test_bitwise_xor_rejected(self):
+        self._verbatim("max_z_height ^ 1")
+
+    def test_left_shift_rejected(self):
+        self._verbatim("max_z_height << 2")
+
+    def test_comparison_rejected(self):
+        self._verbatim("max_z_height > 1")
+
+    def test_boolean_op_rejected(self):
+        self._verbatim("max_z_height and 1")
+
+    # --- attribute / subscript / dunder reach-arounds (security) ---
+    def test_attribute_access_rejected(self):
+        self._verbatim("max_z_height.__class__")
+
+    def test_subscript_rejected(self):
+        self._verbatim("max_z_height[0]")
+
+    def test_dunder_import_call_rejected(self):
+        # The classic eval() escape — must never resolve a function name we
+        # didn't whitelist, let alone a builtin.
+        self._verbatim("__import__('os')")
+
+    def test_lambda_rejected(self):
+        self._verbatim("(lambda: 1)()")
+
+    def test_walrus_rejected(self):
+        self._verbatim("(x := 1)")
+
+    # --- non-numeric / wrong literal types ---
+    def test_boolean_literal_rejected(self):
+        # True is an int subclass but explicitly excluded — must not become "1".
+        self._verbatim("True + 1")
+
+    def test_string_literal_rejected(self):
+        self._verbatim("'16' + 1")
+
+    def test_keyword_argument_rejected(self):
+        self._verbatim("clamp(max_z_height, lo=1, hi=2)")
+
+    def test_min_max_with_kwargs_rejected(self):
+        self._verbatim("max(max_z_height, key=1)")
+
+    # --- syntax / empty edge cases ---
+    def test_empty_braces_left_verbatim(self):
+        # `{ }` is whitespace only → empty expression → SyntaxError → verbatim.
+        assert _substitute_placeholders("Z{ }", self.HEADER) == "Z{ }"
+
+    def test_trailing_garbage_rejected(self):
+        self._verbatim("max_z_height - ")
+
+    def test_multiple_statements_rejected(self):
+        # A comma makes it a tuple expr, not arithmetic → rejected.
+        self._verbatim("max_z_height, 1")
+
+    # --- positive boundary cases that MUST still work ---
+    def test_unary_minus_on_variable(self):
+        assert _substitute_placeholders("Z{-max_z_height}", self.HEADER) == "Z-16"
+
+    def test_double_unary(self):
+        assert _substitute_placeholders("Z{--max_z_height}", self.HEADER) == "Z16"
+
+    def test_min_with_three_args(self):
+        assert _substitute_placeholders("{min(max_z_height, 20, 5)}", self.HEADER) == "5"
+
+    def test_deeply_nested_parens(self):
+        assert _substitute_placeholders("Z{((((max_z_height))))}", self.HEADER) == "Z16"
+
+    def test_negative_literal_in_clamp(self):
+        # clamp must accept negative bounds without tripping the unary path.
+        assert _substitute_placeholders("Z{clamp(-5, -10, -1)}", self.HEADER) == "Z-5"
