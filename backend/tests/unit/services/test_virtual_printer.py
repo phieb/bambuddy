@@ -36,6 +36,26 @@ def _write_3mf_with_filaments(file_path: Path, filaments: list[dict], plate_inde
         zf.writestr(f"Metadata/plate_{plate_index}.gcode", "; gcode\n")
 
 
+def _write_3mf_multiplate(file_path: Path, plates: list[dict]) -> None:
+    """Build a 3MF whose slice_info.config lists several `<plate>` blocks — the
+    shape Bambu Studio's "Send all" produces (one consolidated project file
+    holding every plate). Each entry in `plates` is
+    `{"index": int, "filaments": [<as in _write_3mf_with_filaments>]}`."""
+    plate_blocks = []
+    for p in plates:
+        filament_xml = "".join(
+            f'<filament id="{f["id"]}" type="{f["type"]}" color="{f["color"]}" '
+            f'used_g="{f["used_g"]}" tray_info_idx="{f.get("tray_info_idx", "")}"/>'
+            for f in p.get("filaments", [])
+        )
+        plate_blocks.append(f'<plate><metadata key="index" value="{p["index"]}"/>{filament_xml}</plate>')
+    config = '<?xml version="1.0" encoding="utf-8"?><config>' + "".join(plate_blocks) + "</config>"
+    with zipfile.ZipFile(file_path, "w") as zf:
+        zf.writestr("Metadata/slice_info.config", config)
+        for p in plates:
+            zf.writestr(f"Metadata/plate_{p['index']}.gcode", "; gcode\n")
+
+
 class TestVirtualPrinterInstance:
     """Tests for VirtualPrinterInstance class."""
 
@@ -1444,6 +1464,160 @@ class TestVirtualPrinterInstance:
         queue_item = added_items[0]
         # Position = max(7) + 1 = 8 — NOT the legacy hardcoded 1.
         assert queue_item.position == 8
+
+    def test_extract_plate_ids_reads_every_plate(self, tmp_path):
+        """`_extract_plate_ids` returns one index per `<plate>` in
+        slice_info.config, in order — the signal a multi-plate "Send all"
+        carries. Single-plate sends yield one index; a non-3MF yields []."""
+        from backend.app.services.virtual_printer.manager import VirtualPrinterInstance
+
+        multi = tmp_path / "all.3mf"
+        _write_3mf_multiplate(multi, [{"index": 1}, {"index": 2}, {"index": 3}])
+        assert VirtualPrinterInstance._extract_plate_ids(multi) == [1, 2, 3]
+
+        single = tmp_path / "one.3mf"
+        _write_3mf_with_filaments(single, [], plate_index=2)
+        assert VirtualPrinterInstance._extract_plate_ids(single) == [2]
+
+        not_3mf = tmp_path / "junk.3mf"
+        not_3mf.write_bytes(b"not a zip")
+        assert VirtualPrinterInstance._extract_plate_ids(not_3mf) == []
+
+    @pytest.mark.asyncio
+    async def test_add_to_print_queue_send_all_enqueues_every_plate(self, tmp_path):
+        """Bambu Studio "Send all" uploads ONE 3MF holding every plate and
+        sends no per-plate MQTT command. The VP queue path used to read only
+        the first `<plate>` and queue a single item, silently dropping plates
+        2..N. Now it must enqueue one item per plate — own plate_id, sharing
+        the archive, taking a contiguous block of positions in plate order."""
+        from backend.app.services.virtual_printer.manager import VirtualPrinterInstance
+
+        added_items: list = []
+
+        class _RecordingDb:
+            def __init__(self):
+                self.add = lambda item: added_items.append(item)
+                self.commit = AsyncMock()
+
+            async def execute(self, query):  # noqa: ARG002
+                """Empty target queue → MAX(position) is 0, so plates land at
+                positions 1, 2, 3."""
+                result = MagicMock()
+                result.scalar = MagicMock(return_value=0)
+                return result
+
+        mock_session_factory = MagicMock()
+        mock_session_ctx = AsyncMock()
+        mock_session_ctx.__aenter__ = AsyncMock(return_value=_RecordingDb())
+        mock_session_ctx.__aexit__ = AsyncMock(return_value=False)
+        mock_session_factory.return_value = mock_session_ctx
+
+        inst = VirtualPrinterInstance(
+            vp_id=51,
+            name="SendAll",
+            mode="queue",
+            model="C12",
+            access_code="12345678",
+            serial_suffix="391800051",
+            target_printer_id=7,
+            auto_dispatch=True,
+            base_dir=tmp_path,
+            session_factory=mock_session_factory,
+        )
+
+        file_path = tmp_path / "send-all.3mf"
+        _write_3mf_multiplate(
+            file_path,
+            [
+                {"index": 1, "filaments": [{"id": "1", "type": "PLA", "color": "#FFF", "used_g": "10"}]},
+                {"index": 2, "filaments": [{"id": "1", "type": "PETG", "color": "#000", "used_g": "5"}]},
+                {"index": 3, "filaments": [{"id": "1", "type": "ABS", "color": "#F00", "used_g": "3"}]},
+            ],
+        )
+
+        mock_archive = MagicMock()
+        mock_archive.id = 909
+        mock_archive.printer_id = None
+        mock_archive.filename = "send-all.3mf"
+        mock_archive.print_name = "send-all"
+        mock_archive.status = "archived"
+
+        with (
+            patch("backend.app.api.routes.settings.get_setting", new_callable=AsyncMock, return_value=None),
+            patch(
+                "backend.app.services.archive.ArchiveService.archive_print",
+                new_callable=AsyncMock,
+                return_value=mock_archive,
+            ),
+            patch("backend.app.core.websocket.ws_manager.send_archive_created", new_callable=AsyncMock),
+        ):
+            await inst._add_to_print_queue(file_path, "192.168.1.100")
+
+        # One item per plate, in plate order.
+        assert len(added_items) == 3
+        assert [qi.plate_id for qi in added_items] == [1, 2, 3]
+        # Contiguous positions after MAX(position)=0.
+        assert [qi.position for qi in added_items] == [1, 2, 3]
+        # All reference the same archive and inherit shared queue settings.
+        assert {qi.archive_id for qi in added_items} == {909}
+        assert all(qi.printer_id == 7 for qi in added_items)
+        assert all(qi.status == "pending" for qi in added_items)
+        assert all(qi.manual_start is False for qi in added_items)
+        # Filament requirements are computed PER plate, not copied from plate 1.
+        assert json.loads(added_items[0].required_filament_types) == ["PLA"]
+        assert json.loads(added_items[1].required_filament_types) == ["PETG"]
+        assert json.loads(added_items[2].required_filament_types) == ["ABS"]
+
+    @pytest.mark.asyncio
+    async def test_add_to_print_queue_single_plate_send_enqueues_one(self, tmp_path):
+        """A single-plate Studio send exports a 3MF with exactly one `<plate>`
+        (Studio strips the rest). That must still produce exactly one queue
+        item carrying that plate's index — regression guard so the multi-plate
+        change doesn't over-queue ordinary single-plate sends."""
+        from backend.app.services.virtual_printer.manager import VirtualPrinterInstance
+
+        added_items: list = []
+        mock_db = AsyncMock()
+        mock_db.add = MagicMock(side_effect=added_items.append)
+        mock_db.commit = AsyncMock()
+        mock_session_factory = MagicMock()
+        mock_session_ctx = AsyncMock()
+        mock_session_ctx.__aenter__ = AsyncMock(return_value=mock_db)
+        mock_session_ctx.__aexit__ = AsyncMock(return_value=False)
+        mock_session_factory.return_value = mock_session_ctx
+
+        inst = VirtualPrinterInstance(
+            vp_id=52,
+            name="SinglePlate",
+            mode="queue",
+            model="C12",
+            access_code="12345678",
+            serial_suffix="391800052",
+            auto_dispatch=True,
+            base_dir=tmp_path,
+            session_factory=mock_session_factory,
+        )
+
+        # Plate index 3 (not 1) proves the index is read, not assumed.
+        file_path = tmp_path / "plate-3.3mf"
+        _write_3mf_with_filaments(file_path, [], plate_index=3)
+
+        mock_archive = MagicMock()
+        mock_archive.id = 1
+        mock_archive.print_name = "plate-3"
+
+        with (
+            patch("backend.app.api.routes.settings.get_setting", new_callable=AsyncMock, return_value=None),
+            patch(
+                "backend.app.services.archive.ArchiveService.archive_print",
+                new_callable=AsyncMock,
+                return_value=mock_archive,
+            ),
+        ):
+            await inst._add_to_print_queue(file_path, "192.168.1.100")
+
+        assert len(added_items) == 1
+        assert added_items[0].plate_id == 3
 
 
 class TestVirtualPrinterManager:
