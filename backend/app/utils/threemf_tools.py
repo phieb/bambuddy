@@ -5,9 +5,11 @@ per-layer filament usage data from the embedded G-code. This enables
 accurate partial usage reporting for multi-material prints.
 """
 
+import ast
 import json
 import logging
 import math
+import operator
 import re
 import zipfile
 from pathlib import Path
@@ -494,8 +496,45 @@ _HEADER_PLACEHOLDER_ALIASES = {
 }
 
 _HEADER_KEY_RE = re.compile(r"^;\s*([^:]+?)\s*:\s*(.+?)\s*$")
-_PLACEHOLDER_RE = re.compile(r"\{([a-zA-Z_][a-zA-Z0-9_]*)\}")
+# A placeholder is anything inside braces — either a bare header key
+# (`{max_layer_z}`) or a small arithmetic expression over header keys
+# (`{max_layer_z - 5}`, `{max_z_height / 2}`). The contents are parsed and
+# validated below; the regex only delimits the candidate.
+_PLACEHOLDER_RE = re.compile(r"\{([^{}]+)\}")
+_BARE_IDENT_RE = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_]*$")
 _START_GCODE_END_MARKER = "; MACHINE_START_GCODE_END"
+
+# Arithmetic allowed inside `{...}` expressions. Restricted to the four basic
+# operators (plus unary +/-) so snippets can express e.g. a sweep height of
+# `max_z_height - 5` or a mid-layer of `max_z_height / 2` without resorting to
+# eval() — the expression is walked as an AST and anything outside this set is
+# rejected (the placeholder is then left verbatim with a warning).
+_ARITH_BINOPS = {
+    ast.Add: operator.add,
+    ast.Sub: operator.sub,
+    ast.Mult: operator.mul,
+    ast.Div: operator.truediv,
+}
+_ARITH_UNARYOPS = {
+    ast.UAdd: operator.pos,
+    ast.USub: operator.neg,
+}
+
+
+def _clamp(x: float, lo: float, hi: float) -> float:
+    return max(lo, min(x, hi))
+
+
+# Whitelisted functions callable inside `{...}` expressions. `clamp(x, lo, hi)`
+# is the safety one: it bounds a computed coordinate to the printer's valid
+# range, e.g. `{clamp(max_z_height - 4, 1.5, 176)}` so a short print can't drive
+# the bed past the nozzle (and a tall one can't exceed the eject ceiling).
+# min/max take two or more args.
+_ARITH_FUNCS = {
+    "min": min,
+    "max": max,
+    "clamp": _clamp,
+}
 
 
 def _parse_3mf_gcode_header(content: str) -> dict[str, str]:
@@ -527,23 +566,101 @@ def _parse_3mf_gcode_header(content: str) -> dict[str, str]:
     return header
 
 
+def _resolve_header_value(name: str, header: dict[str, str]) -> str | None:
+    """Look up a header key, falling back to its alias (e.g. `max_layer_z`)."""
+    value = header.get(name)
+    if value is None:
+        alias = _HEADER_PLACEHOLDER_ALIASES.get(name)
+        if alias is not None:
+            value = header.get(alias)
+    return value
+
+
+def _format_number(value: float) -> str:
+    """Render a computed number for g-code: trim trailing zeros, no exponent.
+
+    `16.0 - 5` → `11`, `16.0 / 2` → `8`, `16.0 / 3` → `5.3333`. Integer-valued
+    results drop the decimal point so they read like hand-written coordinates.
+    """
+    rounded = round(value, 4)
+    if rounded == int(rounded):
+        return str(int(rounded))
+    return f"{rounded:.4f}".rstrip("0").rstrip(".")
+
+
+def _eval_arith_node(node: ast.AST, header: dict[str, str]) -> float:
+    """Recursively evaluate a whitelisted arithmetic AST node.
+
+    Raises ValueError for anything outside the allowed grammar (unknown
+    variable, unsupported operator/function, non-numeric header value).
+    """
+    if isinstance(node, ast.BinOp) and type(node.op) in _ARITH_BINOPS:
+        left = _eval_arith_node(node.left, header)
+        right = _eval_arith_node(node.right, header)
+        return _ARITH_BINOPS[type(node.op)](left, right)
+    if isinstance(node, ast.UnaryOp) and type(node.op) in _ARITH_UNARYOPS:
+        return _ARITH_UNARYOPS[type(node.op)](_eval_arith_node(node.operand, header))
+    # Numeric literal. Exclude bool (a subclass of int) for tidiness.
+    if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)) and not isinstance(node.value, bool):
+        return float(node.value)
+    if isinstance(node, ast.Name):
+        raw = _resolve_header_value(node.id, header)
+        if raw is None:
+            raise ValueError(f"unknown variable {node.id!r}")
+        try:
+            return float(raw)
+        except ValueError:
+            raise ValueError(f"header value for {node.id!r} is not numeric: {raw!r}")
+    if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in _ARITH_FUNCS:
+        if node.keywords:
+            raise ValueError(f"{node.func.id}() takes no keyword arguments")
+        args = [_eval_arith_node(a, header) for a in node.args]
+        fn = node.func.id
+        if fn == "clamp" and len(args) != 3:
+            raise ValueError("clamp() takes exactly 3 arguments (x, lo, hi)")
+        if fn in ("min", "max") and len(args) < 2:
+            raise ValueError(f"{fn}() takes at least 2 arguments")
+        return float(_ARITH_FUNCS[fn](*args))
+    raise ValueError("unsupported expression")
+
+
 def _substitute_placeholders(snippet: str, header: dict[str, str]) -> str:
-    """Replace `{var}` placeholders with header values, leaving unknowns intact."""
+    """Replace `{...}` placeholders with header values, leaving unknowns intact.
+
+    A placeholder is either a bare header key (`{max_layer_z}` → the raw header
+    string, preserving its formatting) or a small arithmetic expression over
+    header keys (`{max_z_height - 5}`, `{max_z_height / 2}`) evaluated to a
+    number. Anything that can't be resolved or evaluated is left verbatim with
+    a warning — a typo never silently expands to an empty string.
+    """
 
     def repl(m: re.Match) -> str:
-        name = m.group(1)
-        value = header.get(name)
-        if value is None:
-            alias = _HEADER_PLACEHOLDER_ALIASES.get(name)
-            if alias is not None:
-                value = header.get(alias)
-        if value is None:
+        expr = m.group(1).strip()
+
+        # Bare key: return the raw header string so existing formatting
+        # (e.g. "16.00") is preserved exactly.
+        if _BARE_IDENT_RE.match(expr):
+            value = _resolve_header_value(expr, header)
+            if value is None:
+                logger.warning(
+                    "G-code injection: placeholder {%s} not found in 3MF header; leaving as-is",
+                    expr,
+                )
+                return m.group(0)
+            return value
+
+        # Otherwise evaluate as arithmetic over header variables.
+        try:
+            tree = ast.parse(expr, mode="eval")
+            result = _eval_arith_node(tree.body, header)
+        except (ValueError, SyntaxError, ZeroDivisionError, TypeError) as e:
             logger.warning(
-                "G-code injection: placeholder {%s} not found in 3MF header; leaving as-is",
-                name,
+                "G-code injection: could not evaluate placeholder {%s} (%s); leaving as-is",
+                expr,
+                e,
             )
             return m.group(0)
-        return value
+        return _format_number(result)
 
     return _PLACEHOLDER_RE.sub(repl, snippet)
 
