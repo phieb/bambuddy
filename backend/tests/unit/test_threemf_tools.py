@@ -14,6 +14,7 @@ from backend.app.utils.threemf_tools import (
     extract_filament_usage_from_3mf,
     extract_plate_extruder_set_from_3mf,
     extract_project_filaments_from_3mf,
+    extract_single_plate_3mf,
     get_cumulative_usage_at_layer,
     mm_to_grams,
     parse_gcode_layer_filament_usage,
@@ -700,3 +701,117 @@ class TestExtractEmbeddedPresetsFrom3mf:
                 "printer": None,
                 "process": None,
             }
+
+
+def _build_multiplate_3mf(path, plate_ids, gcode_size=200_000):
+    """Write a realistic multi-plate 3MF to ``path``.
+
+    Each plate gets a large (``gcode_size`` byte) ``Metadata/plate_N.gcode``
+    blob plus its small per-plate sidecars, so dropping the other plates'
+    gcode is a measurable size win. Shared/base entries
+    (``3D/3dmodel.model``, ``project_settings.config``, etc.) are written once.
+    ``slice_info.config`` lists every plate.
+    """
+    plate_blocks = "".join(
+        f'<plate><metadata key="index" value="{pid}"/>'
+        f'<filament id="1" type="PLA" color="#FF0000" used_g="10"/></plate>'
+        for pid in plate_ids
+    )
+    slice_info = '<?xml version="1.0" encoding="UTF-8"?><config>' + plate_blocks + "</config>"
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as zf:
+        # Shared / base files (kept for every plate).
+        zf.writestr("[Content_Types].xml", "<Types/>")
+        zf.writestr("_rels/.rels", "<Relationships/>")
+        zf.writestr("3D/3dmodel.model", "<model>" + ("x" * 5000) + "</model>")
+        zf.writestr("Metadata/project_settings.config", json.dumps({"printer_model": "Bambu Lab P1S"}))
+        zf.writestr("Metadata/model_settings.config", "<config/>")
+        zf.writestr("Metadata/slice_info.config", slice_info)
+        # Per-plate artifacts.
+        for pid in plate_ids:
+            # Distinct, incompressible-ish gcode so each plate's blob is large.
+            zf.writestr(f"Metadata/plate_{pid}.gcode", f"; plate {pid}\n" + (f"G1 X{pid} E{pid}\n" * gcode_size))
+            zf.writestr(f"Metadata/plate_{pid}.gcode.md5", f"md5-{pid}")
+            zf.writestr(f"Metadata/plate_{pid}.json", json.dumps({"plate": pid}))
+            zf.writestr(f"Metadata/plate_{pid}.png", b"png" + bytes([pid]))
+            zf.writestr(f"Metadata/plate_{pid}_small.png", b"png-small")
+
+
+class TestExtractSinglePlate3mf:
+    """Tests for extract_single_plate_3mf() (multi-plate dispatch size fix)."""
+
+    def test_keeps_target_drops_others(self, tmp_path):
+        source = tmp_path / "multi.3mf"
+        _build_multiplate_3mf(source, [1, 2, 3])
+
+        out = extract_single_plate_3mf(source, 2)
+        assert out is not None
+        try:
+            assert zipfile.is_zipfile(out)
+            with zipfile.ZipFile(out, "r") as zf:
+                names = set(zf.namelist())
+                # Target plate's artifacts kept.
+                assert "Metadata/plate_2.gcode" in names
+                assert "Metadata/plate_2.json" in names
+                assert "Metadata/plate_2.png" in names
+                # Other plates' artifacts dropped (the big gcode especially).
+                assert "Metadata/plate_1.gcode" not in names
+                assert "Metadata/plate_3.gcode" not in names
+                assert "Metadata/plate_1.json" not in names
+                assert "Metadata/plate_3.png" not in names
+                # Base / shared files kept.
+                assert "3D/3dmodel.model" in names
+                assert "[Content_Types].xml" in names
+                assert "_rels/.rels" in names
+                assert "Metadata/project_settings.config" in names
+                assert "Metadata/model_settings.config" in names
+                # slice_info lists only plate 2.
+                slice_info = zf.read("Metadata/slice_info.config").decode()
+                assert 'key="index" value="2"' in slice_info
+                assert 'value="1"' not in slice_info
+                assert 'value="3"' not in slice_info
+            # Result is much smaller than the source (≈1/3, only one of three
+            # big gcode blobs survives).
+            assert out.stat().st_size < source.stat().st_size / 2
+        finally:
+            out.unlink(missing_ok=True)
+
+    def test_preserves_original_plate_index(self, tmp_path):
+        source = tmp_path / "multi.3mf"
+        _build_multiplate_3mf(source, [1, 2, 3])
+        out = extract_single_plate_3mf(source, 3)
+        assert out is not None
+        try:
+            with zipfile.ZipFile(out, "r") as zf:
+                # Index is NOT renumbered to 1 — plate 3 stays plate 3.
+                assert "Metadata/plate_3.gcode" in zf.namelist()
+                assert 'value="3"' in zf.read("Metadata/slice_info.config").decode()
+        finally:
+            out.unlink(missing_ok=True)
+
+    def test_single_plate_source_returns_none(self, tmp_path):
+        source = tmp_path / "single.3mf"
+        _build_multiplate_3mf(source, [1])
+        assert extract_single_plate_3mf(source, 1) is None
+
+    def test_missing_plate_returns_none(self, tmp_path):
+        source = tmp_path / "multi.3mf"
+        _build_multiplate_3mf(source, [1, 2])
+        assert extract_single_plate_3mf(source, 9) is None
+
+    def test_unparseable_source_returns_none(self, tmp_path):
+        bad = tmp_path / "bad.3mf"
+        bad.write_bytes(b"not a zip file")
+        assert extract_single_plate_3mf(bad, 1) is None
+
+    def test_resulting_file_is_valid_zip_readable(self, tmp_path):
+        source = tmp_path / "multi.3mf"
+        _build_multiplate_3mf(source, [1, 2])
+        out = extract_single_plate_3mf(source, 1)
+        assert out is not None
+        try:
+            with zipfile.ZipFile(out, "r") as zf:
+                assert zf.testzip() is None
+                # The kept gcode is still readable and intact.
+                assert zf.read("Metadata/plate_1.gcode").startswith(b"; plate 1")
+        finally:
+            out.unlink(missing_ok=True)
