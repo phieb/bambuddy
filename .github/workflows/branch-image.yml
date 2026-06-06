@@ -52,6 +52,6 @@ jobs:
           push: true
           # Fixed tag that the muscle compose + Watchtower track, regardless of
           # which branch was built.
-          tags: ghcr.io/${{ github.repository_owner }}/bambuddy:vp-gcode-injection
+          tags: ghcr.io/${{ github.repository_owner }}/bambuddy:phieb-fixes
           cache-from: type=gha
           cache-to: type=gha,mode=max
