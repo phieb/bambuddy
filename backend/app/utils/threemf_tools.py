@@ -9,6 +9,7 @@ import json
 import logging
 import math
 import re
+import tempfile
 import zipfile
 from pathlib import Path
 
@@ -643,6 +644,136 @@ def inject_gcode_into_3mf(
 
     except Exception:
         # Clean up temp file on error
+        if "tmp_path" in locals() and tmp_path.exists():
+            tmp_path.unlink(missing_ok=True)
+        return None
+
+
+_PLATE_BLOCK_RE = re.compile(r"<plate>.*?</plate>", re.DOTALL)
+_SLICE_INFO_PATH = "Metadata/slice_info.config"
+
+
+def _plate_index_of_block(block: str) -> int | None:
+    """Pull the ``index`` (or ``plater_id``) value out of a single
+    ``<plate>...</plate>`` block from ``slice_info.config``."""
+    m = re.search(r'<metadata key="(?:index|plater_id)" value="(\d+)"', block)
+    if m:
+        try:
+            return int(m.group(1))
+        except ValueError:
+            return None
+    return None
+
+
+def extract_single_plate_3mf(source: Path, plate_id: int) -> Path | None:
+    """Write a temp 3MF holding only ``plate_id`` out of a multi-plate 3MF.
+
+    Bambu Studio's "Send all" uploads one consolidated project 3MF carrying
+    every plate's G-code (often ~56MB). The VP queue dispatches one item per
+    plate, each pointing at that same archive — so a naive dispatch uploads
+    the full file once per plate. This produces a small single-plate 3MF
+    (the size of a normal single-plate send, ~6-23MB) containing just the
+    target plate, so each dispatch uploads only what that plate needs.
+
+    Strategy (mirrors :func:`slicer_3mf_convert.merge_plate_3mfs` in reverse):
+    - KEEP every shared/base entry (anything that is not a per-plate artifact
+      of *another* plate): ``3D/3dmodel.model``, ``[Content_Types].xml``,
+      ``_rels/.rels``, ``project_settings.config``, ``model_settings.config``,
+      Auxiliaries, cut_information, etc.
+    - KEEP ``plate_id``'s own per-plate artifacts
+      (:func:`slicer_3mf_convert.per_plate_artifact_names`).
+    - DROP the per-plate artifacts of all other plates (the big
+      ``Metadata/plate_M.gcode`` for M != plate_id is the main size win).
+    - REWRITE ``Metadata/slice_info.config`` to list only ``plate_id``'s
+      ``<plate>`` block.
+    - The plate is kept at its original index ``plate_id`` (not renumbered to
+      1) — working single-plate sends keep their original index, and the
+      dispatch still calls ``start_print(plate_id=plate_id)``.
+
+    Returns the temp file path (caller owns cleanup), or ``None`` (logged at
+    debug) on any parse error or if the source isn't a multi-plate 3MF, so
+    the caller can fall back to uploading the original file.
+    """
+    from backend.app.services.slicer_3mf_convert import per_plate_artifact_names
+
+    try:
+        with zipfile.ZipFile(source, "r") as zf:
+            names = zf.namelist()
+
+            # Determine the plate indices the source actually defines from the
+            # per-plate gcode entries. Only a genuine multi-plate file is worth
+            # splitting; a single-plate (or unparseable) source returns None.
+            present_plates: set[int] = set()
+            for name in names:
+                m = re.fullmatch(r"Metadata/plate_(\d+)\.gcode", name)
+                if m:
+                    present_plates.add(int(m.group(1)))
+            if len(present_plates) < 2:
+                logger.debug(
+                    "extract_single_plate_3mf: source %s is not multi-plate (plates=%s); skipping",
+                    source,
+                    sorted(present_plates),
+                )
+                return None
+            if plate_id not in present_plates:
+                logger.debug(
+                    "extract_single_plate_3mf: plate %s not in source %s (plates=%s); skipping",
+                    plate_id,
+                    source,
+                    sorted(present_plates),
+                )
+                return None
+
+            # Per-plate artifacts to drop = every other plate's set.
+            keep_set = per_plate_artifact_names(plate_id)
+            drop_set: set[str] = set()
+            for other in present_plates:
+                if other == plate_id:
+                    continue
+                drop_set |= per_plate_artifact_names(other)
+            # Never drop something that's also in the target's keep set.
+            drop_set -= keep_set
+
+            # Rebuild slice_info.config with only the target plate's block.
+            new_slice_info: bytes | None = None
+            if _SLICE_INFO_PATH in names:
+                try:
+                    xml = zf.read(_SLICE_INFO_PATH).decode("utf-8", errors="replace")
+                except (OSError, KeyError) as exc:
+                    logger.debug("extract_single_plate_3mf: couldn't read slice_info (%s)", exc)
+                    return None
+                target_block = None
+                for block in _PLATE_BLOCK_RE.findall(xml):
+                    if _plate_index_of_block(block) == plate_id:
+                        target_block = block
+                        break
+                if target_block is not None:
+                    new_slice_info = (
+                        '<?xml version="1.0" encoding="UTF-8"?>\n'
+                        "<config>\n"
+                        "  <header>\n"
+                        '    <header_item key="X-BBL-Client-Type" value="slicer"/>\n'
+                        '    <header_item key="X-BBL-Client-Version" value="02.06.00.51"/>\n'
+                        f"  </header>\n  {target_block}\n</config>\n"
+                    ).encode()
+
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".3mf") as tmp:
+                tmp_path = Path(tmp.name)
+
+            with zipfile.ZipFile(tmp_path, "w", zipfile.ZIP_DEFLATED) as out_zf:
+                for info in zf.infolist():
+                    name = info.filename
+                    if name in drop_set:
+                        continue
+                    if name == _SLICE_INFO_PATH and new_slice_info is not None:
+                        out_zf.writestr(info, new_slice_info)
+                    else:
+                        out_zf.writestr(info, zf.read(name))
+
+        return tmp_path
+
+    except (zipfile.BadZipFile, OSError, KeyError) as exc:
+        logger.debug("extract_single_plate_3mf: failed to extract plate %s from %s (%s)", plate_id, source, exc)
         if "tmp_path" in locals() and tmp_path.exists():
             tmp_path.unlink(missing_ok=True)
         return None

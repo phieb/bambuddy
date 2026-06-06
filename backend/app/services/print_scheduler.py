@@ -1997,6 +1997,33 @@ class PrintScheduler:
             await self._power_off_if_needed(db, item)
             return
 
+        # "Send all" uploads one consolidated multi-plate 3MF (~56MB) and the
+        # VP queue enqueues one item per plate, all pointing at that same
+        # archive. Uploading the full file once per plate is 56MB x N plates —
+        # over a weak WiFi link that times out. Extract just this item's plate
+        # into a small single-plate 3MF (~6MB, the size of a normal single
+        # send) and upload that instead. Defensive: any failure falls back to
+        # the original full file so dispatch is never blocked. Single-plate
+        # sources are left untouched.
+        extracted_path = None
+        if item.plate_id:
+            try:
+                from backend.app.utils.threemf_tools import extract_single_plate_3mf
+
+                extracted_path = extract_single_plate_3mf(file_path, item.plate_id)
+                if extracted_path:
+                    file_path = extracted_path
+                    logger.info(
+                        "Queue item %s: extracted single plate %s from multi-plate 3MF for upload",
+                        item.id,
+                        item.plate_id,
+                    )
+            except Exception as e:
+                extracted_path = None
+                logger.warning(
+                    "Queue item %s: single-plate extraction failed, using full file: %s", item.id, e
+                )
+
         # G-code injection for auto-print systems (#422)
         injected_path = None
         if item.gcode_injection:
@@ -2081,6 +2108,11 @@ class PrintScheduler:
         # Clean up injected temp file after upload attempt
         if injected_path and injected_path.exists():
             injected_path.unlink(missing_ok=True)
+        # Clean up the extracted single-plate temp file after upload attempt.
+        # If injection ran on the extracted file, injected_path is a separate
+        # temp and extracted_path is now an orphan — unlink it too.
+        if extracted_path and extracted_path.exists():
+            extracted_path.unlink(missing_ok=True)
 
         if not uploaded:
             error_msg = (

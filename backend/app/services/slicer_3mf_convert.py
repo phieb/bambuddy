@@ -79,6 +79,31 @@ def extract_source_printer_model(zip_bytes: bytes) -> str | None:
 _PLATE_BLOCK_RE = re.compile(r"<plate>.*?</plate>", re.DOTALL)
 
 
+def per_plate_artifact_names(n: int) -> set[str]:
+    """The set of archive entry names that belong to plate ``n`` specifically.
+
+    These are the per-plate artifacts a multi-plate 3MF carries one copy of
+    per plate (the big one being ``Metadata/plate_N.gcode``). Everything NOT
+    in any plate's set is shared/base data (``3D/3dmodel.model``,
+    ``[Content_Types].xml``, ``project_settings.config``, Auxiliaries, …).
+
+    Single source of truth for both directions: :func:`merge_plate_3mfs`
+    (overlay these from each input into one combined file) and
+    :func:`backend.app.utils.threemf_tools.extract_single_plate_3mf` (keep
+    only one plate's set, drop the others').
+    """
+    return {
+        f"Metadata/plate_{n}.gcode",
+        f"Metadata/plate_{n}.gcode.md5",
+        f"Metadata/plate_{n}.json",
+        f"Metadata/plate_{n}.png",
+        f"Metadata/plate_{n}_small.png",
+        f"Metadata/plate_no_light_{n}.png",
+        f"Metadata/top_{n}.png",
+        f"Metadata/pick_{n}.png",
+    }
+
+
 def merge_plate_3mfs(
     plate_outputs: list[tuple[int, bytes]],
     source_3mf_bytes: bytes | None = None,
@@ -151,17 +176,7 @@ def merge_plate_3mfs(
     ).encode("utf-8")
 
     # Per-plate artifact filenames we lift from each input into the base.
-    def _per_plate_entries(n: int) -> set[str]:
-        return {
-            f"Metadata/plate_{n}.gcode",
-            f"Metadata/plate_{n}.gcode.md5",
-            f"Metadata/plate_{n}.json",
-            f"Metadata/plate_{n}.png",
-            f"Metadata/plate_{n}_small.png",
-            f"Metadata/plate_no_light_{n}.png",
-            f"Metadata/top_{n}.png",
-            f"Metadata/pick_{n}.png",
-        }
+    _per_plate_entries = per_plate_artifact_names
 
     # When the per-plate slices skip writing ``plate_N.png`` (BS CLI with
     # ``--arrange`` does this — the gcode is fresh but the preview slot
