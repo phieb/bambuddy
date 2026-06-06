@@ -423,3 +423,108 @@ class TestStartMarkerHelper:
         content = "G28\nG1 X0\n"
         result = _inject_start_at_marker(content, "INJECTED")
         assert result == "INJECTED\nG28\nG1 X0\n"
+
+
+class TestArithmeticPlaceholders:
+    """Tests for `{expr}` arithmetic in snippets (follow-up to #422 placeholders).
+
+    A bare key still substitutes the raw header string verbatim; an expression
+    over header keys (`{max_z_height - 5}`, `{max_z_height / 2}`) is evaluated
+    to a number. Anything unresolvable is left intact with a warning.
+    """
+
+    HEADER = {"max_z_height": "16.00", "total_layer_number": "80", "total_filament_weight": "36.55"}
+
+    def test_subtraction(self):
+        assert _substitute_placeholders("G1 Z{max_z_height - 5} F600", self.HEADER) == "G1 Z11 F600"
+
+    def test_division(self):
+        assert _substitute_placeholders("G1 Z{max_z_height / 2}", self.HEADER) == "G1 Z8"
+
+    def test_multiplication(self):
+        assert _substitute_placeholders("{total_layer_number * 2}", self.HEADER) == "160"
+
+    def test_addition(self):
+        assert _substitute_placeholders("Z{max_z_height + 2}", self.HEADER) == "Z18"
+
+    def test_non_integer_result_keeps_decimals(self):
+        # 16.00 / 3 = 5.3333… — trimmed to 4 dp, trailing zeros removed.
+        assert _substitute_placeholders("Z{max_z_height / 3}", self.HEADER) == "Z5.3333"
+
+    def test_parentheses_and_precedence(self):
+        assert _substitute_placeholders("{(max_z_height - 1) * 2}", self.HEADER) == "30"
+
+    def test_alias_inside_expression(self):
+        # max_layer_z is an alias for max_z_height.
+        assert _substitute_placeholders("Z{max_layer_z - 6}", self.HEADER) == "Z10"
+
+    def test_three_layer_sweep_sequence(self):
+        """The motivating case: sweep at full height, half height, then near-zero."""
+        snippet = "G1 Z{max_z_height}\nG1 Z{max_z_height / 2}\nG1 Z0.2"
+        result = _substitute_placeholders(snippet, self.HEADER)
+        # Bare key keeps its raw "16.00"; computed values are trimmed.
+        assert result == "G1 Z16.00\nG1 Z8\nG1 Z0.2"
+
+    def test_bare_key_unchanged_by_arithmetic_support(self):
+        """Plain `{key}` still returns the verbatim header string, not a reformatted number."""
+        assert _substitute_placeholders("w={total_filament_weight}", self.HEADER) == "w=36.55"
+
+    def test_unknown_variable_in_expression_left_verbatim(self):
+        assert _substitute_placeholders("Z{does_not_exist - 5}", self.HEADER) == "Z{does_not_exist - 5}"
+
+    def test_division_by_zero_left_verbatim(self):
+        assert _substitute_placeholders("Z{max_z_height / 0}", self.HEADER) == "Z{max_z_height / 0}"
+
+    def test_disallowed_operator_left_verbatim(self):
+        # Power (**) is not in the whitelist — must not evaluate.
+        assert _substitute_placeholders("Z{max_z_height ** 2}", self.HEADER) == "Z{max_z_height ** 2}"
+
+    def test_function_call_rejected(self):
+        # abs() is not in the function whitelist (only min/max/clamp) → left verbatim.
+        assert _substitute_placeholders("Z{abs(max_z_height)}", self.HEADER) == "Z{abs(max_z_height)}"
+
+    def test_clamp_passthrough_in_range(self):
+        # 16 - 4 = 12, within [1.5, 176] → unchanged.
+        assert _substitute_placeholders("Z{clamp(max_z_height - 4, 1.5, 176)}", self.HEADER) == "Z12"
+
+    def test_clamp_lower_bound_protects_short_print(self):
+        # The safety case: a 2mm print would give 2-4 = -2 (bed into nozzle); clamped to 1.5.
+        assert _substitute_placeholders("Z{clamp(max_z_height - 4, 1.5, 176)}", {"max_z_height": "2"}) == "Z1.5"
+
+    def test_clamp_upper_bound_caps_tall_print(self):
+        # 240 + 26 = 266; capped to the eject ceiling 206.
+        assert _substitute_placeholders("Z{clamp(max_z_height + 26, 31.5, 206)}", {"max_z_height": "240"}) == "Z206"
+
+    def test_min_and_max(self):
+        assert _substitute_placeholders("{min(max_z_height, 10)} {max(max_z_height, 10)}", self.HEADER) == "10 16"
+
+    def test_nested_clamp_arithmetic(self):
+        # clamp result composes with further arithmetic: clamp(12,1.5,176)+30 = 42.
+        assert _substitute_placeholders("Z{clamp(max_z_height - 4, 1.5, 176) + 30}", self.HEADER) == "Z42"
+
+    def test_clamp_wrong_arity_left_verbatim(self):
+        assert _substitute_placeholders("Z{clamp(max_z_height, 1.5)}", self.HEADER) == "Z{clamp(max_z_height, 1.5)}"
+
+    def test_unknown_function_left_verbatim(self):
+        assert _substitute_placeholders("Z{sqrt(max_z_height)}", self.HEADER) == "Z{sqrt(max_z_height)}"
+
+    def test_non_numeric_header_value_in_expression_left_verbatim(self):
+        header = {"slicer": "BambuStudio"}
+        assert _substitute_placeholders("{slicer - 1}", header) == "{slicer - 1}"
+
+    def test_end_to_end_through_inject(self):
+        """Arithmetic resolves when injected through the public 3MF entry point."""
+        source = _make_test_3mf(_BAMBU_GCODE_TEMPLATE)
+        result = None
+        try:
+            # Template header carries max_z_height: 16.00 → sweep at 11.
+            result = inject_gcode_into_3mf(source, 1, None, "G1 Z{max_layer_z - 5} F600")
+            assert result is not None
+            with zipfile.ZipFile(result, "r") as zf:
+                gcode = zf.read("Metadata/plate_1.gcode").decode("utf-8")
+            assert "G1 Z11 F600" in gcode
+            assert "{max_layer_z" not in gcode
+        finally:
+            source.unlink(missing_ok=True)
+            if result:
+                result.unlink(missing_ok=True)
