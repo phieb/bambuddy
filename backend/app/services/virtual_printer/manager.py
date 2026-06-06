@@ -584,44 +584,22 @@ class VirtualPrinterInstance:
                     target_model = None
                     if not self.target_printer_id and self.model:
                         target_model = VIRTUAL_PRINTER_MODELS.get(self.model)
-                    plate_id = self._extract_plate_id(file_path)
-
-                    # Parse the 3MF for per-slot filament requirements (#1188).
-                    # The manual /print-queue/ POST flow does this at queue-add
-                    # time; the VP path used to skip it, so the scheduler fell
-                    # through to model-only matching and dispatched onto whatever
-                    # printer happened to be free regardless of loaded colour.
-                    # required_filament_types is populated unconditionally — it's
-                    # cheap, lets the scheduler reject obvious mis-matches even
-                    # without force_color_match. filament_overrides only carries
-                    # force_color_match=True when the per-VP setting is on, so
-                    # upgraders keep the old behaviour by default.
-                    required_filament_types_json: str | None = None
-                    filament_overrides_json: str | None = None
-                    requirements = extract_filament_requirements(file_path, plate_id)
-                    if requirements:
-                        types = sorted({r["type"] for r in requirements if r.get("type")})
-                        if types:
-                            required_filament_types_json = json.dumps(types)
-                        if self.queue_force_color_match:
-                            overrides = [
-                                {
-                                    "slot_id": r["slot_id"],
-                                    "type": r.get("type", ""),
-                                    "color": r.get("color", ""),
-                                    "force_color_match": True,
-                                }
-                                for r in requirements
-                                if r.get("type") and r.get("color")
-                            ]
-                            if overrides:
-                                filament_overrides_json = json.dumps(overrides)
+                    # A single-plate Studio send exports a 3MF carrying one
+                    # <plate> in slice_info.config; a multi-plate "Send all"
+                    # exports the full project with one <plate> per plate and
+                    # sends no per-plate MQTT command — the uploaded file is the
+                    # only signal of intent. Enqueue one item per plate so
+                    # "Send all" no longer silently drops plates 2..N; before
+                    # this, only the first <plate> was queued.
+                    plate_ids = self._extract_plate_ids(file_path) or [None]
 
                     # Pick the next free position the same way the manual
                     # /print-queue/ POST does — previously hardcoded to 1,
                     # which created duplicate position=1 rows on every
                     # VP upload and made queue execution order
-                    # non-deterministic for any non-empty queue.
+                    # non-deterministic for any non-empty queue. Multi-plate
+                    # uploads take a contiguous block of positions in plate
+                    # order.
                     from sqlalchemy import func, select as _sql_select
 
                     queue_scope = _sql_select(func.max(PrintQueueItem.position)).where(
@@ -636,27 +614,71 @@ class VirtualPrinterInstance:
                         max_pos = int(max_pos_raw) if max_pos_raw is not None else 0
                     except (TypeError, ValueError):
                         max_pos = 0
-                    next_position = max_pos + 1
 
-                    queue_item = PrintQueueItem(
-                        printer_id=self.target_printer_id,
-                        target_model=target_model,
-                        archive_id=archive.id,
-                        plate_id=plate_id,
-                        position=next_position,
-                        status="pending",
-                        manual_start=not self.auto_dispatch,
-                        required_filament_types=required_filament_types_json,
-                        filament_overrides=filament_overrides_json,
-                        bed_levelling=bed_levelling,
-                        flow_cali=flow_cali,
-                        vibration_cali=vibration_cali,
-                        layer_inspect=layer_inspect,
-                        timelapse=timelapse,
-                    )
-                    db.add(queue_item)
+                    # Parse the 3MF for per-slot filament requirements (#1188),
+                    # per plate — each plate of a multi-plate project can use a
+                    # different filament set. The manual /print-queue/ POST flow
+                    # does this at queue-add time; the VP path used to skip it,
+                    # so the scheduler fell through to model-only matching and
+                    # dispatched onto whatever printer happened to be free
+                    # regardless of loaded colour. required_filament_types is
+                    # populated unconditionally — it's cheap and lets the
+                    # scheduler reject obvious mis-matches even without
+                    # force_color_match. filament_overrides only carries
+                    # force_color_match=True when the per-VP setting is on, so
+                    # upgraders keep the old behaviour by default.
+                    queue_items: list[PrintQueueItem] = []
+                    for offset, plate_id in enumerate(plate_ids):
+                        required_filament_types_json = None
+                        filament_overrides_json = None
+                        requirements = extract_filament_requirements(file_path, plate_id)
+                        if requirements:
+                            types = sorted({r["type"] for r in requirements if r.get("type")})
+                            if types:
+                                required_filament_types_json = json.dumps(types)
+                            if self.queue_force_color_match:
+                                overrides = [
+                                    {
+                                        "slot_id": r["slot_id"],
+                                        "type": r.get("type", ""),
+                                        "color": r.get("color", ""),
+                                        "force_color_match": True,
+                                    }
+                                    for r in requirements
+                                    if r.get("type") and r.get("color")
+                                ]
+                                if overrides:
+                                    filament_overrides_json = json.dumps(overrides)
+
+                        queue_item = PrintQueueItem(
+                            printer_id=self.target_printer_id,
+                            target_model=target_model,
+                            archive_id=archive.id,
+                            plate_id=plate_id,
+                            position=max_pos + 1 + offset,
+                            status="pending",
+                            manual_start=not self.auto_dispatch,
+                            required_filament_types=required_filament_types_json,
+                            filament_overrides=filament_overrides_json,
+                            bed_levelling=bed_levelling,
+                            flow_cali=flow_cali,
+                            vibration_cali=vibration_cali,
+                            layer_inspect=layer_inspect,
+                            timelapse=timelapse,
+                        )
+                        db.add(queue_item)
+                        queue_items.append(queue_item)
+
                     await db.commit()
-                    logger.info("[VP %s] Added to queue: %s", self.name, queue_item.id)
+                    if len(queue_items) > 1:
+                        logger.info(
+                            "[VP %s] Added %d plates to queue: %s",
+                            self.name,
+                            len(queue_items),
+                            [qi.id for qi in queue_items],
+                        )
+                    else:
+                        logger.info("[VP %s] Added to queue: %s", self.name, queue_items[0].id)
                     await self._broadcast_archive_created(archive)
                 else:
                     logger.error("Failed to archive file: %s", file_path.name)
@@ -696,8 +718,17 @@ class VirtualPrinterInstance:
             logger.debug("[VP %s] archive_created broadcast failed: %s", self.name, e)
 
     @staticmethod
-    def _extract_plate_id(file_path: Path) -> int | None:
-        """Extract plate index from 3MF slice_info.config."""
+    def _extract_plate_ids(file_path: Path) -> list[int]:
+        """Extract every plate index from a 3MF's slice_info.config, in order.
+
+        A single-plate Studio send exports a 3MF whose slice_info.config lists
+        exactly one ``<plate>``; a multi-plate "Send all" exports the full
+        project with one ``<plate>`` per plate. Returns ``[]`` when
+        slice_info.config is missing or malformed, so the caller falls back to
+        a single ``plate_id=None`` item (legacy behaviour for non-3MF or
+        unconventional bundles).
+        """
+        plate_ids: list[int] = []
         try:
             import xml.etree.ElementTree as ET
             import zipfile
@@ -706,19 +737,22 @@ class VirtualPrinterInstance:
                 if "Metadata/slice_info.config" in zf.namelist():
                     content = zf.read("Metadata/slice_info.config").decode()
                     root = ET.fromstring(content)  # noqa: S314  # nosec B314
-                    plate = root.find(".//plate")
-                    if plate is not None:
+                    for plate in root.findall(".//plate"):
                         for meta in plate.findall("metadata"):
                             if meta.get("key") == "index" and meta.get("value"):
-                                return int(meta.get("value"))
+                                try:
+                                    plate_ids.append(int(meta.get("value")))
+                                except (TypeError, ValueError):
+                                    pass
+                                break
         except Exception as e:
-            # Malformed / missing slice_info.config — fall through to None.
+            # Malformed / missing slice_info.config — fall through to [].
             # Logged at debug so a non-3MF or unconventional 3MF doesn't
             # spam production logs; a debug trail exists for support
             # bundles when wrong-plate dispatches are reported.
-            logger.debug("[VP] _extract_plate_id failed for %s: %s", file_path.name, e)
-            return None
-        return None
+            logger.debug("[VP] _extract_plate_ids failed for %s: %s", file_path.name, e)
+            return []
+        return plate_ids
 
     # -- Service lifecycle --
 
