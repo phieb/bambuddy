@@ -1,0 +1,229 @@
+{
+  "main": {
+    "id": "b32ad38d5260d869",
+    "type": "split",
+    "children": [
+      {
+        "id": "42ec08bd16dd796f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "813478cd0d67b63f",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "85baccc5816b8f09",
+    "type": "split",
+    "children": [
+      {
+        "id": "4234e2dad4deae61",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc9b646463db4c2e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "62cdb96305ddd171",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "28c666ea69cec244",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bd6b459cbdabe4c9",
+    "type": "split",
+    "children": [
+      {
+        "id": "ab98630e909cac47",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "69307610be24c7ea",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/gcode-injection.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for gcode-injection"
+            }
+          },
+          {
+            "id": "5c2e691b1e51f95c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/gcode-injection.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from gcode-injection"
+            }
+          },
+          {
+            "id": "31c329af5eac51b7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "8a8b8f79ac26969e",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "379247f00319adcb",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/gcode-injection.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of gcode-injection"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "cc9b646463db4c2e",
+  "lastOpenFiles": [
+    "backend/app/utils/threemf_tools.py.tmp.96696.bad9462023d9",
+    "frontend/src/api/client.ts",
+    "CHANGELOG.md",
+    "backend/app/utils/threemf_tools.py.tmp.96696.444f18288a21",
+    "backend/app/utils/threemf_tools.py",
+    "backend/tests/unit/__pycache__/test_gcode_injection.cpython-312-pytest-9.0.3.pyc.138948",
+    "backend/app/core/__pycache__/database.cpython-312.pyc.124276084869808",
+    "slicer-api/README.md",
+    "docker-publish-daily-beta.sh",
+    "backend/app/services/virtual_printer/__pycache__/diagnostic.cpython-312.pyc.128299765626128",
+    "backend/app/services/__pycache__/smart_plug_manager.cpython-312.pyc.128299782330608",
+    "backend/app/services/__pycache__/print_scheduler.cpython-312.pyc.128299782330176",
+    "backend/app/api/routes/__pycache__/webhook.cpython-312.pyc.128299782019504",
+    "archive/projects/1/attachments/cover_a2be424f9a804e59be3c9c11f7ae314b.png",
+    "archive/library/thumbnails/95c8edecee134a60b6e5740651b0fa2e.png",
+    "archive/projects/1/attachments/cover_e3214a0fdbdd426a9732f15f16ac0fc2.png",
+    "archive/library/thumbnails/2d8aa36d0ee048a2b4379b82ea62a5fc.png",
+    "frontend/node_modules/lucide-react/README.md",
+    "frontend/node_modules/three/README.md",
+    "frontend/node_modules/three/examples/jsm/libs/basis/README.md",
+    "frontend/node_modules/three/examples/fonts/ttf/README.md",
+    "frontend/node_modules/three/examples/fonts/README.md",
+    "frontend/node_modules/gcode-preview/node_modules/three/README.md",
+    "frontend/node_modules/gcode-preview/node_modules/three/examples/jsm/libs/basis/README.md",
+    "frontend/node_modules/gcode-preview/node_modules/three/examples/fonts/ttf/README.md",
+    "frontend/node_modules/gcode-preview/node_modules/three/examples/fonts/README.md",
+    "frontend/node_modules/jsdom/README.md",
+    "frontend/node_modules/caniuse-lite/README.md",
+    "frontend/node_modules/three/src/nodes/materialx/DISCLAIMER.md",
+    "frontend/node_modules/gcode-preview/node_modules/three/examples/jsm/nodes/materialx/DISCLAIMER.md",
+    "frontend/node_modules/recharts/README.md",
+    "frontend/node_modules/recharts/DEVELOPING.md",
+    "frontend/node_modules/recharts/CONTRIBUTING.md",
+    "frontend/node_modules/recharts/CHANGELOG.md",
+    "frontend/node_modules/recharts/AGENTS.md",
+    "frontend/node_modules/eslint/README.md",
+    "frontend/node_modules/three/examples/jsm/libs/draco/README.md",
+    "frontend/node_modules/victory-vendor/README.md",
+    "frontend/node_modules/victory-vendor/CHANGELOG.md",
+    "frontend/node_modules/msw/README.md",
+    "frontend/node_modules/istanbul-reports/lib/html/assets/sort-arrow-sprite.png",
+    "frontend/node_modules/istanbul-reports/lib/html-spa/assets/sort-arrow-sprite.png",
+    "frontend/node_modules/istanbul-reports/lib/html/assets/favicon.png",
+    "frontend/node_modules/jszip/graph.svg"
+  ]
+}
