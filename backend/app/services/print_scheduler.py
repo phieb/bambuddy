@@ -1763,13 +1763,21 @@ class PrintScheduler:
         return False
 
     async def _check_previous_success(self, db: AsyncSession, item: PrintQueueItem) -> bool:
-        """Check if the previous print on this printer succeeded."""
-        # Find the most recent completed queue item for this printer
+        """Check if the previous print on this printer succeeded.
+
+        A user-cancelled predecessor is treated as neutral — `cancelled` is a
+        deliberate action, not a failure, so subsequent items should still
+        dispatch (#1667). `skipped` is excluded from the lookback entirely:
+        a skip isn't an actual print attempt, so it must not gate downstream
+        items — counting it as a failed predecessor was the cascade bug that
+        let a single cancellation block 18 items over 3 days for the reporter.
+        Only `failed` and `aborted` — real print-attempt failures — block.
+        """
         result = await db.execute(
             select(PrintQueueItem)
             .where(PrintQueueItem.printer_id == item.printer_id)
             .where(PrintQueueItem.id != item.id)
-            .where(PrintQueueItem.status.in_(["completed", "failed", "skipped", "aborted"]))
+            .where(PrintQueueItem.status.in_(["completed", "failed", "cancelled", "aborted"]))
             .order_by(PrintQueueItem.completed_at.desc())
             .limit(1)
         )
@@ -1779,7 +1787,7 @@ class PrintScheduler:
         if not prev_item:
             return True
 
-        return prev_item.status == "completed"
+        return prev_item.status in ("completed", "cancelled")
 
     async def _power_off_if_needed(self, db: AsyncSession, item: PrintQueueItem):
         """Power off printer if auto_off_after is enabled (waits for cooldown)."""
@@ -1874,6 +1882,23 @@ class PrintScheduler:
             item.filament_short = False
             await db.commit()
         return False
+
+    async def _propagate_owner_to_printer_manager(self, db: AsyncSession, item: PrintQueueItem) -> None:
+        """Hand the queue item's owner to printer_manager so the
+        print-complete callback can credit the user in PrintLogEntry (#1670).
+
+        No-ops when the item has no `created_by_id` or the referenced user
+        row is missing (e.g. user deleted between queue-add and dispatch —
+        in that case the print log row falls back to the existing un-credited
+        behaviour rather than crashing the dispatch).
+        """
+        if not item.created_by_id:
+            return
+        from backend.app.models.user import User
+
+        owner = await db.get(User, item.created_by_id)
+        if owner:
+            printer_manager.set_current_print_user(item.printer_id, owner.id, owner.username)
 
     async def _start_print(self, db: AsyncSession, item: PrintQueueItem):
         """Upload file and start print for a queue item.
@@ -2151,6 +2176,16 @@ class PrintScheduler:
                 ams_mapping=ams_mapping,
                 created_by_id=item.created_by_id,
             )
+
+        # Propagate the queue item's owner into printer_manager so the
+        # print-complete callback can credit the user in the PrintLogEntry
+        # (#1670). The dispatch path in `background_dispatch.py` does the
+        # equivalent for archive/library "Print" flows; the queue path was
+        # missing this hop, which left the print log's User column blank
+        # for any print started from the queue. `created_by_id` is set
+        # either at queue-add time (UI-added items) or when the user
+        # clicks the manual-start button (#1670 fix in print_queue.py).
+        await self._propagate_owner_to_printer_manager(db, item)
 
         # IMPORTANT: Set status to "printing" BEFORE sending the print command.
         # This prevents phantom reprints if the backend crashes/restarts after the
