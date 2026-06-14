@@ -1194,6 +1194,8 @@ function mapModelCode(ssdpModel: string | null): string {
     'BL-P003': 'X1E',
     // X2 Series
     'N6': 'X2D',
+    // A2 Series
+    'N9': 'A2L',
     // P Series
     'C11': 'P1S',
     'C12': 'P1P',
@@ -1211,6 +1213,7 @@ function mapModelCode(ssdpModel: string | null): string {
     'P2S': 'P2S',
     'A1': 'A1',
     'A1 Mini': 'A1 Mini',
+    'A2L': 'A2L',
     'H2D': 'H2D',
     'H2D Pro': 'H2D Pro',
     'H2C': 'H2C',
@@ -3649,7 +3652,7 @@ function PrinterCard({
                                       slotNumber={slotIdx + 1}
                                     />
                                     <div className="text-[9px] text-white font-bold truncate">
-                                      {tray?.tray_type || t('ams.slotEmpty')}
+                                      {tray?.tray_type || t(emptyKind === 'reset' ? 'ams.slotUnconfigured' : 'ams.slotEmpty')}
                                     </div>
                                     {/* Fill bar */}
                                     <div className="mt-1 h-1.5 bg-black/30 rounded-full overflow-hidden">
@@ -3977,7 +3980,7 @@ function PrinterCard({
                               slotNumber={1}
                             />
                             <div className="text-[9px] text-white font-bold truncate">
-                              {tray?.tray_type || t('ams.slotEmpty')}
+                              {tray?.tray_type || t(emptyKind === 'reset' ? 'ams.slotUnconfigured' : 'ams.slotEmpty')}
                             </div>
                             {/* Fill bar */}
                             <div className="mt-1 h-1.5 bg-black/30 rounded-full overflow-hidden">
@@ -5963,28 +5966,31 @@ export function AddPrinterModal({
                 onChange={(e) => setForm({ ...form, model: e.target.value })}
               >
                 <option value="">{t('printers.modal.selectModel')}</option>
+                <optgroup label="A1 Series">
+                  <option value="A1">A1</option>
+                  <option value="A1 Mini">A1 Mini</option>
+                </optgroup>
+                <optgroup label="A2 Series">
+                  <option value="A2L">A2L</option>
+                </optgroup>
                 <optgroup label="H2 Series">
                   <option value="H2C">H2C</option>
                   <option value="H2D">H2D</option>
                   <option value="H2D Pro">H2D Pro</option>
                   <option value="H2S">H2S</option>
                 </optgroup>
-                <optgroup label="X2 Series">
-                  <option value="X2D">X2D</option>
+                <optgroup label="P Series">
+                  <option value="P1P">P1P</option>
+                  <option value="P1S">P1S</option>
+                  <option value="P2S">P2S</option>
                 </optgroup>
                 <optgroup label="X1 Series">
-                  <option value="X1E">X1E</option>
-                  <option value="X1C">X1 Carbon</option>
                   <option value="X1">X1</option>
+                  <option value="X1C">X1 Carbon</option>
+                  <option value="X1E">X1E</option>
                 </optgroup>
-                <optgroup label="P Series">
-                  <option value="P2S">P2S</option>
-                  <option value="P1S">P1S</option>
-                  <option value="P1P">P1P</option>
-                </optgroup>
-                <optgroup label="A1 Series">
-                  <option value="A1">A1</option>
-                  <option value="A1 Mini">A1 Mini</option>
+                <optgroup label="X2 Series">
+                  <option value="X2D">X2D</option>
                 </optgroup>
               </select>
             </div>
@@ -6489,28 +6495,31 @@ function EditPrinterModal({
                 onChange={(e) => setForm({ ...form, model: e.target.value })}
               >
                 <option value="">{t('printers.modal.selectModel')}</option>
+                <optgroup label="A1 Series">
+                  <option value="A1">A1</option>
+                  <option value="A1 Mini">A1 Mini</option>
+                </optgroup>
+                <optgroup label="A2 Series">
+                  <option value="A2L">A2L</option>
+                </optgroup>
                 <optgroup label="H2 Series">
                   <option value="H2C">H2C</option>
                   <option value="H2D">H2D</option>
                   <option value="H2D Pro">H2D Pro</option>
                   <option value="H2S">H2S</option>
                 </optgroup>
-                <optgroup label="X2 Series">
-                  <option value="X2D">X2D</option>
+                <optgroup label="P Series">
+                  <option value="P1P">P1P</option>
+                  <option value="P1S">P1S</option>
+                  <option value="P2S">P2S</option>
                 </optgroup>
                 <optgroup label="X1 Series">
-                  <option value="X1E">X1E</option>
-                  <option value="X1C">X1 Carbon</option>
                   <option value="X1">X1</option>
+                  <option value="X1C">X1 Carbon</option>
+                  <option value="X1E">X1E</option>
                 </optgroup>
-                <optgroup label="P Series">
-                  <option value="P2S">P2S</option>
-                  <option value="P1S">P1S</option>
-                  <option value="P1P">P1P</option>
-                </optgroup>
-                <optgroup label="A1 Series">
-                  <option value="A1">A1</option>
-                  <option value="A1 Mini">A1 Mini</option>
+                <optgroup label="X2 Series">
+                  <option value="X2D">X2D</option>
                 </optgroup>
               </select>
             </div>

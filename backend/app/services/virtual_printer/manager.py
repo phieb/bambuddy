@@ -44,6 +44,8 @@ VIRTUAL_PRINTER_MODELS = {
     "C13": "X1E",  # X1E
     # X2 Series
     "N6": "X2D",  # X2D
+    # A2 Series (single-FDM + integrated cutter/plotter)
+    "N9": "A2L",  # A2L
     # P Series
     "C11": "P1P",  # P1P
     "C12": "P1S",  # P1S
@@ -76,6 +78,8 @@ MODEL_SERIAL_PREFIXES = {
     "C13": "03W00A",  # X1E
     # X2 Series
     "N6": "20P90A",  # X2D (first 4 chars "20P9" match real serials)
+    # A2 Series
+    "N9": "26A19A",  # A2L (first 5 chars "26A19" match real serials)
     # P Series
     "C11": "01S00A",  # P1P
     "C12": "01P00A",  # P1S
@@ -586,22 +590,21 @@ class VirtualPrinterInstance:
                     target_model = None
                     if not self.target_printer_id and self.model:
                         target_model = VIRTUAL_PRINTER_MODELS.get(self.model)
-                    # A single-plate Studio send exports a 3MF carrying one
-                    # <plate> in slice_info.config; a multi-plate "Send all"
-                    # exports the full project with one <plate> per plate and
-                    # sends no per-plate MQTT command — the uploaded file is the
-                    # only signal of intent. Enqueue one item per plate so
-                    # "Send all" no longer silently drops plates 2..N; before
-                    # this, only the first <plate> was queued.
-                    plate_ids = self._extract_plate_ids(file_path) or [None]
+                    # #1733: multi-plate "Send All" uploads ship every plate in
+                    # one 3MF — `slice_info.config` lists each `<plate>` with
+                    # its own index. Enqueue one PrintQueueItem per plate so
+                    # the scheduler runs each separately. Single-plate "Send"
+                    # comes through as `[N]` (one plate index) so the loop
+                    # below runs once and the existing behaviour is preserved.
+                    plate_ids = self._extract_plate_ids(file_path)
 
-                    # Pick the next free position the same way the manual
-                    # /print-queue/ POST does — previously hardcoded to 1,
-                    # which created duplicate position=1 rows on every
-                    # VP upload and made queue execution order
-                    # non-deterministic for any non-empty queue. Multi-plate
-                    # uploads take a contiguous block of positions in plate
-                    # order.
+                    # Pick a base position the same way the manual /print-queue/
+                    # POST does, then hand consecutive positions to each plate
+                    # so a Send All keeps plate-order execution inside the
+                    # queue (#1733). Previously hardcoded to 1, which created
+                    # duplicate position=1 rows on every VP upload and made
+                    # queue execution order non-deterministic for any non-
+                    # empty queue.
                     from sqlalchemy import func, select as _sql_select
 
                     queue_scope = _sql_select(func.max(PrintQueueItem.position)).where(
@@ -617,22 +620,22 @@ class VirtualPrinterInstance:
                     except (TypeError, ValueError):
                         max_pos = 0
 
-                    # Parse the 3MF for per-slot filament requirements (#1188),
-                    # per plate — each plate of a multi-plate project can use a
-                    # different filament set. The manual /print-queue/ POST flow
-                    # does this at queue-add time; the VP path used to skip it,
-                    # so the scheduler fell through to model-only matching and
-                    # dispatched onto whatever printer happened to be free
-                    # regardless of loaded colour. required_filament_types is
-                    # populated unconditionally — it's cheap and lets the
+                    # Parse per-plate filament requirements (#1188). Each plate
+                    # has its own filament set in `slice_info.config`, so the
+                    # `required_filament_types` / `filament_overrides` columns
+                    # on each queue item reflect THAT plate, not the file's
+                    # first plate. Scoping was already plate-aware via #1697 —
+                    # the `extract_filament_requirements(path, plate_id)` filter
+                    # returns just the plate's filaments. required_filament_types
+                    # is populated unconditionally — it's cheap, lets the
                     # scheduler reject obvious mis-matches even without
                     # force_color_match. filament_overrides only carries
                     # force_color_match=True when the per-VP setting is on, so
                     # upgraders keep the old behaviour by default.
-                    queue_items: list[PrintQueueItem] = []
-                    for offset, plate_id in enumerate(plate_ids):
-                        required_filament_types_json = None
-                        filament_overrides_json = None
+                    queue_item_ids: list[int] = []
+                    for offset, plate_id in enumerate(plate_ids, start=1):
+                        required_filament_types_json: str | None = None
+                        filament_overrides_json: str | None = None
                         requirements = extract_filament_requirements(file_path, plate_id)
                         if requirements:
                             types = sorted({r["type"] for r in requirements if r.get("type")})
@@ -657,7 +660,7 @@ class VirtualPrinterInstance:
                             target_model=target_model,
                             archive_id=archive.id,
                             plate_id=plate_id,
-                            position=max_pos + 1 + offset,
+                            position=max_pos + offset,
                             status="pending",
                             manual_start=not self.auto_dispatch,
                             required_filament_types=required_filament_types_json,
@@ -674,18 +677,19 @@ class VirtualPrinterInstance:
                             gcode_injection=self.gcode_injection,
                         )
                         db.add(queue_item)
-                        queue_items.append(queue_item)
-
+                        await db.flush()  # populate queue_item.id before logging
+                        queue_item_ids.append(queue_item.id)
                     await db.commit()
-                    if len(queue_items) > 1:
-                        logger.info(
-                            "[VP %s] Added %d plates to queue: %s",
-                            self.name,
-                            len(queue_items),
-                            [qi.id for qi in queue_items],
-                        )
+                    if len(queue_item_ids) == 1:
+                        logger.info("[VP %s] Added to queue: %s", self.name, queue_item_ids[0])
                     else:
-                        logger.info("[VP %s] Added to queue: %s", self.name, queue_items[0].id)
+                        logger.info(
+                            "[VP %s] Added %d queue items for multi-plate upload (plates %s): %s",
+                            self.name,
+                            len(queue_item_ids),
+                            plate_ids,
+                            queue_item_ids,
+                        )
                     await self._broadcast_archive_created(archive)
                 else:
                     logger.error("Failed to archive file: %s", file_path.name)
@@ -726,16 +730,26 @@ class VirtualPrinterInstance:
 
     @staticmethod
     def _extract_plate_ids(file_path: Path) -> list[int]:
-        """Extract every plate index from a 3MF's slice_info.config, in order.
+        """Extract every plate index from a 3MF's slice_info.config.
 
-        A single-plate Studio send exports a 3MF whose slice_info.config lists
-        exactly one ``<plate>``; a multi-plate "Send all" exports the full
-        project with one ``<plate>`` per plate. Returns ``[]`` when
-        slice_info.config is missing or malformed, so the caller falls back to
-        a single ``plate_id=None`` item (legacy behaviour for non-3MF or
-        unconventional bundles).
+        A multi-plate "Send All" from BambuStudio / OrcaSlicer uploads a
+        single 3MF containing every plate the user selected. Each plate
+        has its own ``<plate>`` block with a ``<metadata key="index"
+        value="N"/>`` child and its own ``Metadata/plate_N.gcode`` payload
+        inside the same zip. Returning the full ordered list lets the VP
+        queue path create one queue item per plate (`_add_to_print_queue`
+        loops over the result), so "Send All" of a 3-plate file produces
+        3 queue items sharing the same archive — one per plate to print.
+
+        Single-plate "Send" hits the same code path and returns ``[N]``
+        for whichever plate the user selected; the loop runs once and the
+        existing single-plate behaviour is preserved.
+
+        Returns ``[1]`` when the 3MF is missing ``slice_info.config``,
+        unparseable, or contains no plate-index metadata — the original
+        single-plate fallback. Production logs at debug so a non-3MF
+        upload doesn't spam, but the trail survives for support bundles.
         """
-        plate_ids: list[int] = []
         try:
             import xml.etree.ElementTree as ET
             import zipfile
@@ -744,22 +758,20 @@ class VirtualPrinterInstance:
                 if "Metadata/slice_info.config" in zf.namelist():
                     content = zf.read("Metadata/slice_info.config").decode()
                     root = ET.fromstring(content)  # noqa: S314  # nosec B314
+                    plate_ids: list[int] = []
                     for plate in root.findall(".//plate"):
                         for meta in plate.findall("metadata"):
                             if meta.get("key") == "index" and meta.get("value"):
                                 try:
                                     plate_ids.append(int(meta.get("value")))
-                                except (TypeError, ValueError):
-                                    pass
+                                except ValueError:
+                                    continue
                                 break
+                    if plate_ids:
+                        return plate_ids
         except Exception as e:
-            # Malformed / missing slice_info.config — fall through to [].
-            # Logged at debug so a non-3MF or unconventional 3MF doesn't
-            # spam production logs; a debug trail exists for support
-            # bundles when wrong-plate dispatches are reported.
             logger.debug("[VP] _extract_plate_ids failed for %s: %s", file_path.name, e)
-            return []
-        return plate_ids
+        return [1]
 
     # -- Service lifecycle --
 
